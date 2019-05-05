@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Lara Croft">
 <meta property="og:description" content="window.onload=function(){       document.getElementById(&quot;button&quot;).onclick = function(){       var user_keyWords = document.getElementById(&quot;keyWords&quot;).value.replace(/，/ig,&apos;,&apos;);   //  get raw">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T14:02:32.742Z">
+<meta property="og:updated_time" content="2019-05-05T15:34:48.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lara Croft">
 <meta name="twitter:description" content="window.onload=function(){       document.getElementById(&quot;button&quot;).onclick = function(){       var user_keyWords = document.getElementById(&quot;keyWords&quot;).value.replace(/，/ig,&apos;,&apos;);   //  get raw">
@@ -430,7 +430,10 @@
       if (document.getElementById("case_insensitive").checked)
         letter = "on";
       // change the URL of this iframe
-      document.getElementById("ngrams").src = "https://books.google.com/ngrams/interactive_chart?content=" + encodeURI(user_keyWords) + "&case_insensitive=" + letter + "&year_start=" + year_start + "&year_end=" + year_end + "&corpus=" + language.toString() + "&smoothing=" + smoothing.toString();
+      if (letter == "on")
+        document.getElementById("ngrams").src = "https://books.google.com/ngrams/interactive_chart?content=" + encodeURI(user_keyWords) + "&case_insensitive=on" + "&year_start=" + year_start + "&year_end=" + year_end + "&corpus=" + language.toString() + "&smoothing=" + smoothing.toString();
+      else
+      document.getElementById("ngrams").src = "https://books.google.com/ngrams/interactive_chart?content=" + encodeURI(user_keyWords) + "&year_start=" + year_start + "&year_end=" + year_end + "&corpus=" + language.toString() + "&smoothing=" + smoothing.toString();
       }
     }
   </script>
@@ -440,9 +443,9 @@
 	查询词语（用逗号分隔）: <input type="text" id="keyWords">	
 	<input type="checkbox" class="checkbox" name="case_insensitive" id="case_insensitive" style="vertical-align:middle">区分大小写
 	<div class="query_dcs_line">年份从
-        <input class="query" type="text" name="year_start" id="year_start" size="2" value="1800" maxlength="4">
+        <input class="query" type="text" name="year_start" id="year_start" size="4" value="1800" maxlength="4">
         至
-        <input class="query" type="text" name="year_end" id="year_end" size="2" value="2000" maxlength="4">
+        <input class="query" type="text" name="year_end" id="year_end" size="4" value="2000" maxlength="4">
         语言采用
         <select name="corpus" id="language">
           
