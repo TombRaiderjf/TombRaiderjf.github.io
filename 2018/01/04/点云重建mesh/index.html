@@ -389,13 +389,7 @@
           
           <div id="content" class="content">
             
-
   <div id="posts" class="posts-expand">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5663118915128759" data-ad-slot="7995185803"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     
 
   
@@ -536,6 +530,13 @@
       
 
       
+            
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5663118915128759" data-ad-slot="7995185803"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
         <p>点云重建mesh是个很头疼的过程，就meshlab中的方法说说.</p>
 <p><strong><a href="http://hhoppe.com/proj/screenedpoisson/" target="_blank" rel="noopener">Screened Poisson Surface</a></strong>：有向点集生成封闭曲面，简单地从二维来看，就是四叉树确定边界，三维空间中，就是八叉树确定表面，其中八叉树深度（octree depth）决定了重建得到曲面的分辨率，重建mesh的face数目随depth指数增长，重建时间也是如此。我理解的不够深入，还是贴上别人写的分析吧 -&gt; <a href="http://blog.csdn.net/jennychenhit/article/details/52126156?locationNum=8" target="_blank" rel="noopener">泊松曲面重建</a>.此方法的弊端是要形成封闭的曲面，这就不可避免地产生了一些奇怪的凸包，以及周围噪点带来的曲面的过度延伸，进一步增加了face的数目，从例程得到的点云包含241717个有向点，按默认depth=8重建得到的mesh含有123479个face，把mesh导入blender，密集恐惧症都快有了。如果用在大规模场景中，简直是灾难；而把depth降低到7则损失大量细节，完全是天壤之别！！</p>
 <p><img src="/img/mesh0 (1).png" width="500"><br><img src="/img/mesh0 (2).png" width="500"></p>
