@@ -1,0 +1,27 @@
+body{
+    text-align: center;
+    margin: auto;
+}
+
+#header{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.selector{
+    padding-top: 10px;
+    text-align: left;
+    background: rgba(235, 235, 235, 0.5);
+}
+
+#submit{
+    margin: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.condition{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
