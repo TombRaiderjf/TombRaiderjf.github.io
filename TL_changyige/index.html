@@ -11,10 +11,10 @@
     </head>
     <body>
         <div class="container">
-            <div class="col-lg-10 col-lg-offset-1" id="header">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12" id="header">
                 <h1>天龙八部畅易阁角色查询网</h1>
             </div>
-            <div class="col-lg-10 col-lg-offset-1 selector">
+            <div class="col-lg-10 col-lg-offset-1 selector col-sm-12">
             <form method="POST" action="search.php">
                 <div id="server">
                     
@@ -27,7 +27,14 @@
                     <label class="radio-inline">
                         <input type="radio" name="sex">女
                     </label>
-                    
+                </div>
+                <div class="condition">
+                    <label class="checkbox-inline"><b>重楼</b></label>
+                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼肩</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼玉</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼戒</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼链</label>
+                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼甲</label>
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>价格</b></label>
@@ -38,6 +45,7 @@
                     <label class="radio-inline"><input type="radio" name="price">10000-25000</label>
                     <label class="radio-inline"><input type="radio" name="price">25000-50000</label>
                     <label class="radio-inline"><input type="radio" name="price">50000-100000</label>
+                    <label class="radio-inline"><input type="radio" name="price">100000-以上</label>
                 </div>
                 
                 <div class="condition">
@@ -96,11 +104,11 @@
                     <label class="checkbox-inline">
                         <input type="checkbox" name="score_diamond">725-960</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond" checked>960-1280</label>    
+                        <input type="checkbox" name="score_diamond" checked>960-1280(一进阶)</label>    
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">1280-1920</label>
+                        <input type="checkbox" name="score_diamond">1280-1920(二进阶)</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">1920-以上</label> 
+                        <input type="checkbox" name="score_diamond">1920-以上(三进阶)</label> 
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>血量</b></label>
