@@ -25,3 +25,8 @@ body{
     margin-top: 2px;
     margin-bottom: 2px;
 }
+
+.data{
+    margin-top: 20px;
+    border: 2px #777 solid;
+}
