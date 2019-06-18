@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 import requests
 import random
+import MySQLdb
 
 
 # get the page information of all the goods in sale
@@ -16,6 +17,7 @@ def getData(url, userAgent):
         html = requests.get(url, headers=header)
         if html.status_code == 200:
             break
+        sleep(1)
     soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
