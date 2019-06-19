@@ -41,8 +41,8 @@ def getData(url, userAgent):
         # print(name, score_equipment.get_text(), price.get_text(), id, chonglou)
 
 def write_data(id, menpai, rank, price):
-    sql = "insert into goods(id, menpai, rank, price) \
-           values (%s, %s, %s, %s)" %(id, menpai, rank, price)
+    sql = "insert into goods value(%s, %s, %s, %s)" %(id, menpai, rank, price)
+    print(sql)
     try:
         cursor = db.cursor()
         cursor.execute(sql)
