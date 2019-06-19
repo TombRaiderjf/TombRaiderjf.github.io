@@ -28,16 +28,17 @@ def getData(url, userAgent):
         name = item.find('span', class_='name').get_text()
         name_pure = name[1: len(name)-1]
         score_equipment = item.find('b')
-        price = item.find('p', class_='price').get_text()
+        price = item.find('p', class_='price').get_text()[1:]
         id = item.find('a', class_='r-img').get('href').split("=")[1]
         split_str = name_pure.split(" ")
         menpai = split_str[0]
         rank = split_str[2]
+        rank_pure = rank[0: len(rank)-1]
         # chonglou = False
         # if item.find('i', class_='icon-cl'):
         #     chonglou = True
-        print(id, menpai_dict[menpai], rank, price)
-        write_data(id, menpai_dict[menpai], rank, price)
+        print(id, menpai_dict[menpai], rank_pure, price)
+        write_data(id, menpai_dict[menpai], rank_pure, price)
         # print(name, score_equipment.get_text(), price.get_text(), id, chonglou)
 
 def write_data(id, menpai, rank, price):
