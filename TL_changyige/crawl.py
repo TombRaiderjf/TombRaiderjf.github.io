@@ -83,7 +83,7 @@ agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
 raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
 for i in range(1, 10):
-    getData(raw_url+str(i), random.choice(agentHeaders))
+    getData(raw_url+str(i))
 t2 = datetime.now()
 print("time=", (t2-t1).seconds)
 db.close()
