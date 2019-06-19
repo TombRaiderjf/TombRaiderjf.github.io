@@ -46,6 +46,7 @@ def write_data(id, menpai, rank, price):
     try:
         cursor.execute(sql)
         db.commit()
+        cursor = db.cursor()
     except:
         db.rollback()
 
