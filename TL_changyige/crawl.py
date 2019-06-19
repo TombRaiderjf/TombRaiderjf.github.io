@@ -26,10 +26,11 @@ def getData(url, userAgent):
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
         name = item.find('span', class_='name')
+        name_pure = name[1: len(name)-1]
         score_equipment = item.find('b')
         price = item.find('p', class_='price')
         id = item.find('a', class_='r-img').get('href').split("=")[1]
-        split_str = name.get_text().split(" ")
+        split_str = name_pure.get_text().split(" ")
         menpai = split_str[0]
         rank = split_str[2]
         # chonglou = False
