@@ -22,7 +22,7 @@ def getData(url, userAgent):
         if html.status_code == 200:
             break
         sleep(1)
-    soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
+    soup = BeautifulSoup(html.content, "html.parser")
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
         name = item.find('span', class_='name')
