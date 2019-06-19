@@ -68,7 +68,7 @@ db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
 raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
-for i in range(1, 10):
+for i in range(1, 100):
     getData(raw_url+str(i), random.choice(agentHeaders))
 t2 = datetime.now()
 print("time=", (t2-t1).seconds)
