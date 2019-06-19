@@ -30,7 +30,7 @@ def getData(url, userAgent):
         score_equipment = item.find('b')
         price = item.find('p', class_='price').get_text()
         id = item.find('a', class_='r-img').get('href').split("=")[1]
-        split_str = name_pure.get_text().split(" ")
+        split_str = name_pure.split(" ")
         menpai = split_str[0]
         rank = split_str[2]
         # chonglou = False
