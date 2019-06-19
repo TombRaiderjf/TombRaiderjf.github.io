@@ -22,7 +22,7 @@ def getData(url, userAgent):
         if html.status_code == 200:
             break
         sleep(1)
-    soup = BeautifulSoup(html.content, "html.parser")
+    soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
         name = item.find('span', class_='name')
@@ -60,7 +60,7 @@ def LoadUserAgents(uafile):
 
 
 
-db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl', charset='utf-8')
+db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
