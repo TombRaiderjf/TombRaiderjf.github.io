@@ -44,7 +44,7 @@ def getData(url):
         html_this = requests.get(url_this, headers=header)
         if html_this.status_code == 200:
             soup_this = BeautifulSoup(html_this.content, "html.parser", from_encoding='utf-8')
-            bottom = soup_this.find('fn-fix-info')
+            bottom = soup_this.find('div', class_='fn-fix-info')
             btm_info = bottom.find_all('span', class_='span')
             score_equipment = btm_info[1].get_text()
             score_diamond = btm_info[6].get_text()
