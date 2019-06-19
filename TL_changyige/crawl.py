@@ -44,9 +44,10 @@ def write_data(id, menpai, rank, price):
     sql = "insert into goods(id, menpai, rank, price) \
            values (%s, %s, %s, %s)" %(id, menpai, rank, price)
     try:
-        cursor.execute(sql)
-        db.commit()
         cursor = db.cursor()
+        cursor.execute(sql)
+        cursor.close()
+        db.commit()
     except:
         db.rollback()
 
@@ -63,7 +64,6 @@ def LoadUserAgents(uafile):
 
 
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
-cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
 raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
