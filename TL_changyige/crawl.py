@@ -10,7 +10,7 @@ import requests
 import random
 import MySQLdb
 
-menpai_dict = {"少林": 0，"明教": 1, "丐帮": 2, "武当": 3, "峨眉": 4, "星宿": 5 ,"天龙": 6, "天山": 7, "逍遥": 8, "慕容": 9, "唐门":10, "鬼谷": 11}
+menpai_dict = {"少林": 0, "明教": 1, "丐帮": 2, "武当": 3, "峨眉": 4, "星宿": 5 ,"天龙": 6, "天山": 7, "逍遥": 8, "慕容": 9, "唐门":10, "鬼谷": 11}
 
 # get the page information of all the goods in sale
 def getData(url, userAgent):
