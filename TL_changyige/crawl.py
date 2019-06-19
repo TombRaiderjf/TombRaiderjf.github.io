@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 # author Acha 2019/6/17
 import sys
 from bs4 import BeautifulSoup
@@ -7,6 +10,7 @@ import requests
 import random
 import MySQLdb
 
+menpai_dict = {"少林": 0，"明教": 1, "丐帮": 2, "武当": 3, "峨眉": 4, "星宿": 5 ,"天龙": 6, "天山": 7, "逍遥": 8, "慕容": 9, "唐门":10, "鬼谷": 11}
 
 # get the page information of all the goods in sale
 def getData(url, userAgent):
@@ -25,11 +29,24 @@ def getData(url, userAgent):
         score_equipment = item.find('b')
         price = item.find('p', class_='price')
         id = item.find('a', class_='r-img').get('href').split("=")[1]
-        chonglou = False
-        if item.find('i', class_='icon-cl'):
-            chonglou = True
-        print(name.get_text(), score_equipment.get_text(), price.get_text(), id, chonglou)
+        split_str = name.get_text().split(" ")
+        menpai = split_str[0]
+        rank = split_str[2]
+        # chonglou = False
+        # if item.find('i', class_='icon-cl'):
+        #     chonglou = True
+        print(id, menpai_dict[menpai], rank, price.get_text())
+        write_data(id, menpai_dict[menpai], rank, price.get_text())
+        # print(name.get_text(), score_equipment.get_text(), price.get_text(), id, chonglou)
 
+def write_data(id, menpai, rank, price):
+    sql = "insert into goods(id, menpai, rank, price) \
+           values (%s, %s, %s, %s)" %(id, menpai, rank, price)
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except:
+        db.rollback()
 
 # load the user-agent file into a list
 def LoadUserAgents(uafile):
@@ -42,11 +59,14 @@ def LoadUserAgents(uafile):
     return uas
 
 
-if __name__ == '__main__':
-    agentHeaders = LoadUserAgents("user_agents.txt")
-    t1 = datetime.now()
-    raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
-    for i in range(1, 100):
-        getData(raw_url+str(i), random.choice(agentHeaders))
-    t2 = datetime.now()
-    print("time=", (t2-t1).seconds)
+
+db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl', charset='utf-8')
+cursor = db.cursor()
+agentHeaders = LoadUserAgents("user_agents.txt")
+t1 = datetime.now()
+raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
+for i in range(1, 10):
+    getData(raw_url+str(i), random.choice(agentHeaders))
+t2 = datetime.now()
+print("time=", (t2-t1).seconds)
+db.close()
