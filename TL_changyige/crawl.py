@@ -25,10 +25,10 @@ def getData(url, userAgent):
     soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
-        name = item.find('span', class_='name')
+        name = item.find('span', class_='name').get_text()
         name_pure = name[1: len(name)-1]
         score_equipment = item.find('b')
-        price = item.find('p', class_='price')
+        price = item.find('p', class_='price').get_text()
         id = item.find('a', class_='r-img').get('href').split("=")[1]
         split_str = name_pure.get_text().split(" ")
         menpai = split_str[0]
@@ -36,9 +36,9 @@ def getData(url, userAgent):
         # chonglou = False
         # if item.find('i', class_='icon-cl'):
         #     chonglou = True
-        print(id, menpai_dict[menpai], rank, price.get_text())
-        write_data(id, menpai_dict[menpai], rank, price.get_text())
-        # print(name.get_text(), score_equipment.get_text(), price.get_text(), id, chonglou)
+        print(id, menpai_dict[menpai], rank, price)
+        write_data(id, menpai_dict[menpai], rank, price)
+        # print(name, score_equipment.get_text(), price.get_text(), id, chonglou)
 
 def write_data(id, menpai, rank, price):
     sql = "insert into goods(id, menpai, rank, price) \
