@@ -2,13 +2,13 @@
     <head><meta name="generator" content="Hexo 3.8.0">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>天唐八部角色搜索</title>
+        <title>天唐八部角色搜索</title>    
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">     
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
         <link rel="shortcut icon" href="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-        <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">     
+        <script type="text/javascript" src="index.js"></script>        
     </head>
     <body>
         <div class="container">
@@ -16,33 +16,34 @@
                 <h1>天唐八部畅易阁角色查询网</h1>
             </div>
             <div class="col-lg-10 col-lg-offset-1 selector col-sm-12">
-            <form method="POST" action="search.php">
+            <form method="POST" action="##" onsubmit="return false" id="form">
                 <div id="server">
                     
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>性别</b></label>
                     <label class="radio-inline">
-                        <input type="radio" name="sex" checked>男
+                        <input type="radio" name="sex" value="0" checked>不限
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="sex">女
+                        <input type="radio" name="sex" value="1">男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="sex" value="0">女
                     </label>
                 </div>
                 <div class="condition">
-                    <label class="checkbox-inline"><b>重楼</b></label>
-                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼肩</label>
-                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼玉</label>
-                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼戒</label>
-                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼链</label>
-                    <label class="checkbox-inline"><input type="checkbox" name="chonglou">重楼甲</label>
+                    <label class="radio-inline"><b>重楼</b></label>
+                    <label class="radio-inline"><input type="radio" name="chonglou" value="-1" checked>不限</label>
+                    <label class="radio-inline"><input type="radio" name="chonglou" value="0">有</label>
+                    <label class="radio-inline"><input type="radio" name="chonglou" value="1">无</label>
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>价格</b></label>
+                    <label class="radio-inline"><input type="radio" name="price" checked>不限</label>
                     <label class="radio-inline"><input type="radio" name="price">0-1000</label>
                     <label class="radio-inline"><input type="radio" name="price">1000-3000</label>
-                    <label class="radio-inline"><input type="radio" name="price">3000-5000</label>
-                    <label class="radio-inline"><input type="radio" name="price" checked>5000-10000</label>
+                    <label class="radio-inline"><input type="radio" name="price">3000-10000</label>
                     <label class="radio-inline"><input type="radio" name="price">10000-25000</label>
                     <label class="radio-inline"><input type="radio" name="price">25000-50000</label>
                     <label class="radio-inline"><input type="radio" name="price">50000-100000</label>
@@ -52,93 +53,105 @@
                 <div class="condition">
                     <label class="checkbox-inline"><b>门派</b></label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">少林</label>
+                        <input type="checkbox" name="menpai" value="-1" checked>不限</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">丐帮</label>
+                        <input type="checkbox" name="menpai" value="0">少林</label>
                     <label class="checkbox-inline">
-                                <input type="checkbox" name="menpai">武当</label>
+                        <input type="checkbox" name="menpai" value="2">丐帮</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">峨眉</label>
+                        <input type="checkbox" name="menpai" value="3">武当</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">星宿</label>
+                        <input type="checkbox" name="menpai" value="4">峨眉</label>
                     <label class="checkbox-inline">
-                            <input type="checkbox" name="menpai">天龙</label>
+                        <input type="checkbox" name="menpai" value="5">星宿</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai" checked>天山</label>
+                        <input type="checkbox" name="menpai" value="6">天龙</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">逍遥</label>
+                        <input type="checkbox" name="menpai" value="7">天山</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">慕容</label>
+                        <input type="checkbox" name="menpai" value="8">逍遥</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">唐门</label>
+                        <input type="checkbox" name="menpai" value="9">慕容</label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="menpai">鬼谷</label>
+                        <input type="checkbox" name="menpai" value="10">唐门</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="menpai" value="11">鬼谷</label>
                 </div>
                 <div class="condition">
                     <label class="checkbox-inline"><b>等级</b></label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="rank">80-89</label> 
+                        <input type="checkbox" name="rank" value="-1" checked>不限</label>                    
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="rank">90-99</label>    
+                        <input type="checkbox" name="rank" value="0">80-89</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="rank">100-109</label>  
+                        <input type="checkbox" name="rank" value="1">90-99</label>    
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="rank" checked>110-119</label>  
+                        <input type="checkbox" name="rank" value="2">100-109</label>  
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="rank" value="3">110-119</label>  
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>装备评分</b></label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_equipment">0-4w</label> 
+                        <input type="checkbox" name="score_equipment" value="-1" checked>不限</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_equipment">4w-10w</label>    
+                        <input type="checkbox" name="score_equipment" value="0">0-4w</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_equipment" checked>10w-30w</label>  
+                        <input type="checkbox" name="score_equipment" value="1">4w-10w</label>    
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_equipment">30w-60w</label>
+                        <input type="checkbox" name="score_equipment" value="2">10w-30w</label>  
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_equipment">60w-以上</label>
+                        <input type="checkbox" name="score_equipment" value="3">30w-60w</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="score_equipment" value="4">60w-以上</label>
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>宝石评分</b></label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">0-725</label> 
+                        <input type="checkbox" name="score_diamond" value="-1" checked>不限</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">725-960</label> 
+                        <input type="checkbox" name="score_diamond" value="0">0-725</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond" checked>960-1280(一进阶)</label>    
+                        <input type="checkbox" name="score_diamond" value="1">725-960</label> 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">1280-1920(二进阶)</label>
+                        <input type="checkbox" name="score_diamond" value="2">960-1280(一进阶)</label>    
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="score_diamond">1920-以上(三进阶)</label> 
+                        <input type="checkbox" name="score_diamond" value="3">1280-1920(二进阶)</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="score_diamond" value="4">1920-以上(三进阶)</label> 
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>血量</b></label>
                     <label class="radio-inline">
-                        <input type="radio" name="blood">0-30w</label> 
+                        <input type="radio" name="blood" value="-1" checked>不限</label> 
                     <label class="radio-inline">
-                        <input type="radio" name="blood">30w以上</label>    
+                        <input type="radio" name="blood" value="0">0-30w</label> 
                     <label class="radio-inline">
-                        <input type="radio" name="blood" checked>50w以上</label>
+                        <input type="radio" name="blood" value="1">30w以上</label>    
                     <label class="radio-inline">
-                        <input type="radio" name="blood">80w以上</label> 
+                        <input type="radio" name="blood" value="2">50w以上</label>
                     <label class="radio-inline">
-                        <input type="radio" name="blood">100w以上</label> 
+                        <input type="radio" name="blood" value="3">80w以上</label> 
+                    <label class="radio-inline">
+                        <input type="radio" name="blood" value="4">100w以上</label> 
                 </div>
                 <div class="condition">
                     <label class="radio-inline"><b>武意等级</b></label>
                     <label class="radio-inline">
-                        <input type="radio" name="wuyi_level">0-30</label> 
+                        <input type="radio" name="wuyi_level" value="-1" checked>不限</label> 
                     <label class="radio-inline">
-                        <input type="radio" name="wuyi_level">30以上</label>    
+                        <input type="radio" name="wuyi_level" value="0">0-30</label> 
                     <label class="radio-inline">
-                        <input type="radio" name="wuyi_level">50以上</label>
+                        <input type="radio" name="wuyi_level" value="1">30以上</label>    
                     <label class="radio-inline">
-                        <input type="radio" name="wuyi_level">80以上</label> 
+                        <input type="radio" name="wuyi_level" value="2">50以上</label>
                     <label class="radio-inline">
-                        <input type="radio" name="wuyi_level">100以上</label> 
+                        <input type="radio" name="wuyi_level" value="3">80以上</label> 
+                    <label class="radio-inline">
+                        <input type="radio" name="wuyi_level" value="4">100以上</label> 
                 </div>
                 <p id="submit">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">查&ensp;询</button></p>
+                <button id="check" type="submit" class="btn btn-primary btn-lg btn-block">查&ensp;询</button></p>
             </form>
             <a href="http://tl.cyg.changyou.com" target="_blank">天龙八部畅易阁官方网站</a>
             </div>

@@ -1,7 +1,6 @@
 <?php
-$array['age'] = array();
-$array['name'] = $_POST['name'];
-$array['age'] = $_POST['age'];
-$array['height'] = $_POST['height'];
+$array['sex'] = array();
+$array['chonglou'] = $_POST['chonglou'];
+$array['sex'] = $_POST['sex'];
 die(json_encode($array));
 ?>
