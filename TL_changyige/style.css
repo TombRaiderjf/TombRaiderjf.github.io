@@ -9,8 +9,9 @@ body{
 }
 
 
-.selector{
+#selector{
     padding-top: 10px;
+    padding-bottom: 10px;
     text-align: left;
     background: rgba(235, 235, 235, 0.5);
 }
@@ -26,7 +27,13 @@ body{
     margin-bottom: 2px;
 }
 
-.data{
+#data{
     margin-top: 20px;
-    border: 2px #777 solid;
+    border: 1px #777 solid;
+}
+
+#sort{
+    text-align: left;
+    padding-left: 0px;
+    margin-top: 20px;
 }
