@@ -22,7 +22,7 @@ if($connect->connect_error)
 }
 
 $sql = "SELECT id, score_equipment FROM goods";
-$result = $conn->query($sql);
+$result = $connect->query($sql);
 
 if ($result->num_rows > 0) {
     // 输出数据
