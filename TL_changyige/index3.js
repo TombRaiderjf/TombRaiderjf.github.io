@@ -42,6 +42,7 @@ $(document).ready(function(){
                     tempHtml += "<tr>";
                     tempHtml += ("<td>" + menpai_dict[response[i]["menpai"]] + "</td>");
                     tempHtml += ("<td>" + sex_dict[response[i]["sex"]] + "</td>");
+                    tempHtml += ("<td>" + response[i]["rank"] + "</td>");
                     tempHtml += ("<td>" + response[i]["score_equipment"] + "</td>");
                     tempHtml += ("<td>" + response[i]["score_diamond"] + "</td>");
                     tempHtml += "<td>10000</td>";
@@ -49,7 +50,7 @@ $(document).ready(function(){
                     tempHtml += ("<td>" + response[i]["wuyi_level"] + "</td>");
                     tempHtml += ("<td>" + response[i]["price"] + "</td>")
                     var url = "http://tl.cyg.changyou.com/goods/char_detail?serial_num=" + response[i]["id"];
-                    tempHtml += ("<td><a href=" + url + "></a></td>");
+                    tempHtml += ("<td><a href=" + url + ">购买</a></td>");
                     tempHtml += "</tr>";
                 }
                 $("#table tbody").append(tempHtml);

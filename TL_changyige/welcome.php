@@ -30,7 +30,6 @@ if ($result->num_rows > 0) {
     $res = array();
     $count = 0;
     while ($row = $result->fetch_assoc()){
-        // echo "列名1: " . $row["id"]. " 列名2: " . $row["score_equipment"]."<br>";
         $data = array(
             'id'=>$row["id"], 
             'sex'=>$row["sex"],
