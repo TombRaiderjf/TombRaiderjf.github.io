@@ -52,7 +52,7 @@ $(document).ready(function(){
                     tempHtml += ("<td><a href=" + url + "></a></td>");
                     tempHtml += "</tr>";
                 }
-                $("tbody").append(tempHtml);
+                $("#table tbody").append(tempHtml);
             },
             error:function(response){
             //数据给后端后返回错误
