@@ -13,29 +13,41 @@ $dbname = "tl";
 
 $connect = new mysqli($servername, $username, $password, $dbname);
 
-// if($connect->connect_error)
-// {
-//     echo "连接失败！";
-//     die("连接失败：". $connect->connect_error);
-// }
-// else{
-//     echo "连接成功！";
-// }
+$err = FALSE;
+
+if($connect->connect_error)
+{
+    $err = TRUE;
+    die("连接失败：". $connect->connect_error);
+}
 
 $sql = "SELECT id, score_equipment FROM goods";
 $result = $connect->query($sql);
 
 
 if ($result->num_rows > 0) {
-    // 输出数据
-    
-    while($row = $result->fetch_assoc()) {
+    // 输出数据 
+    $res = array();
+    $count = 0;
+    while ($row = $result->fetch_assoc()){
         // echo "列名1: " . $row["id"]. " 列名2: " . $row["score_equipment"]."<br>";
-        $data = array('id'=>$row["id"], 'score_equipment'=>$row["score_equipment"]);
-        die(json_encode($data));
-        break;
+        $data = array(
+            'id'=>$row["id"], 
+            'sex'=>$row["sex"],
+            'price'=>$row["price"],
+            'menpai'=>$row["menpai"],
+            'rank'=>$row["rank"],
+            'score_equipment'=>$row["score_equipment"],
+            'score_diamond'=>$row["score_diamond"],
+            'blood'=>$row["blood"],
+            'wuyi_level'=>$row["wuyi_level"]
+        );     
+        array_push($res, $data);
+        $count = $count + 1;
     }
-} else {
+    die(json_encode($res));
+}
+else {
     echo "0 结果";
 }
 $connect->close();
