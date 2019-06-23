@@ -43,7 +43,7 @@ $(document).ready(function(){
                     tempHtml += ("<td>" + menpai_dict[response[i]["menpai"]] + "</td>");
                     tempHtml += ("<td>" + sex_dict[response[i]["sex"]] + "</td>");
                     tempHtml += ("<td>" + response[i]["score_equipment"] + "</td>");
-                    tempHtml += ("<td>" + response[i]["diamond_equipment"] + "</td>");
+                    tempHtml += ("<td>" + response[i]["score_diamond"] + "</td>");
                     tempHtml += "<td>10000</td>";
                     tempHtml += ("<td>" + response[i]["blood"] + "</td>");
                     tempHtml += ("<td>" + response[i]["wuyi_level"] + "</td>");
