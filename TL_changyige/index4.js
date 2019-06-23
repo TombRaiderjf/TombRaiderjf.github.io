@@ -50,7 +50,7 @@ $(document).ready(function(){
                     tempHtml += ("<td>" + response[i]["wuyi_level"] + "</td>");
                     tempHtml += ("<td>" + response[i]["price"] + "</td>")
                     var url = "http://tl.cyg.changyou.com/goods/char_detail?serial_num=" + response[i]["id"];
-                    tempHtml += ("<td><a href=" + url + ">购买</a></td>");
+                    tempHtml += ("<td><a target='_blank' href=" + url + ">购买</a></td>");
                     tempHtml += "</tr>";
                 }
                 $("#table tbody").append(tempHtml);
