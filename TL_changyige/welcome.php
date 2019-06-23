@@ -21,7 +21,7 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT id, score_equipment FROM goods";
+$sql = "SELECT * FROM goods";
 $result = $connect->query($sql);
 
 

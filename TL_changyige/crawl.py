@@ -51,8 +51,8 @@ def getData(url):
             right = soup_this.find('div', class_='h422')
             blood = right.find('i', class_='fn-high-light').get_text()
             wuyi_level = 100
-        print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, wuyi_level) 
-        write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, wuyi_level)
+            print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, wuyi_level) 
+            write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, wuyi_level)
         # print(name, score_equipment.get_text(), price.get_text(), id, chonglou)
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, wuyi_level):
