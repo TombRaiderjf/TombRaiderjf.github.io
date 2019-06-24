@@ -33,6 +33,7 @@ if ($result->num_rows > 0) {
         $data = array(
             'id'=>$row["id"], 
             'sex'=>$row["sex"],
+            'chonglou'=>$row["chonglou"],
             'price'=>$row["price"],
             'menpai'=>$row["menpai"],
             'rank'=>$row["rank"],
