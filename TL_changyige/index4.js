@@ -47,13 +47,13 @@ $(document).ready(function(){
                     tempHtml += ("<td>" + response[i]["rank"] + "</td>");
                     // 重楼红色字体
                     if (response[i]["chonglou"]){
-                        tempHtml += ("<td style='color: #0FF;'>" + response[i]["score_equipment"] + "</td>");
+                        tempHtml += ("<td style='color: #FF0000;'>" + response[i]["score_equipment"] + "</td>");
                     }
                     else{
                         tempHtml += ("<td>" + response[i]["score_equipment"] + "</td>");
                     }                    
                     tempHtml += ("<td>" + response[i]["score_diamond"] + "</td>");
-                    tempHtml += ("<td><img src='" + attribute_dict[response[i]["max_attribute"]] + "'>" + response[i]["max_attack"] + "</td>");
+                    tempHtml += ("<td><img width=20px src='" + attribute_dict[response[i]["max_attribute"]] + "'>&nbsp;" + response[i]["max_attack"] + "</td>");
                     tempHtml += ("<td>" + response[i]["blood"] + "</td>");
                     tempHtml += ("<td>" + response[i]["wuyi_level"] + "</td>");
                     tempHtml += ("<td>" + response[i]["price"] + "</td>")
