@@ -1,6 +1,7 @@
 body{
     text-align: center;
     margin: auto;
+    overflow-y:scroll;
 }
 
 #header{

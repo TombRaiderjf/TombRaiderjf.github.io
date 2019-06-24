@@ -1,7 +1,9 @@
 $(document).ready(function(){
-    var menpai_dict = {"0": "少林","1":"明教", "2":"丐帮", "3": "武当", "4":"峨嵋", "5": "星宿", "6":"天龙", "7": "天山", "8": "逍遥", "9": "慕容", "10": "唐门", "11": "鬼谷"};
+    attribute_dict = {"0": "image/冰.bmp", "1": "image/火.bmp", "2": "image/玄.bmp", "3": "image/毒.bmp"};
+    menpai_dict = {"0": "少林","1":"明教", "2":"丐帮", "3": "武当", "4":"峨嵋", "5": "星宿", "6":"天龙", "7": "天山", "8": "逍遥", "9": "慕容", "10": "唐门", "11": "鬼谷"};
     sex_dict = ["女", "男"];
     $("#check").click(function(){
+        $("#table tbody").html("");
         var menpai = [];
         $('input[name="menpai"]:checked').each(function(){//遍历每一个名字为menpai的复选框，其中选中的执行函数    
             menpai.push($(this).val());//将选中的值添加到数组menpai中    
@@ -13,7 +15,7 @@ $(document).ready(function(){
         var score_equipment = $('input:radio[name="score_equipment"]:checked').val();
         var score_diamond = $('input:radio[name="score_diamond"]:checked').val();
         var blood = $('input:radio[name="blood"]:checked').val();
-        var wuyi_level = 100;
+        var wuyi_level = $('input:radio[name="wuyi_level"]:checked').val();
         var postData = {
             "sex": sex, 
             "chonglou": chonglou, 
@@ -38,14 +40,20 @@ $(document).ready(function(){
                 console.log(response);//打印返回的值
                 var tempHtml = "";
                 for(var i = 0; i< response.length; i++)
-                {
+                {                   
                     tempHtml += "<tr>";
                     tempHtml += ("<td>" + menpai_dict[response[i]["menpai"]] + "</td>");
                     tempHtml += ("<td>" + sex_dict[response[i]["sex"]] + "</td>");
                     tempHtml += ("<td>" + response[i]["rank"] + "</td>");
-                    tempHtml += ("<td>" + response[i]["score_equipment"] + "</td>");
+                    // 重楼红色字体
+                    if (response[i]["chonglou"]){
+                        tempHtml += ("<td style='color: #0FF;'>" + response[i]["score_equipment"] + "</td>");
+                    }
+                    else{
+                        tempHtml += ("<td>" + response[i]["score_equipment"] + "</td>");
+                    }                    
                     tempHtml += ("<td>" + response[i]["score_diamond"] + "</td>");
-                    tempHtml += "<td>10000</td>";
+                    tempHtml += ("<td><img src='" + attribute_dict[response[i]["max_attribute"]] + "'>" + response[i]["max_attack"] + "</td>");
                     tempHtml += ("<td>" + response[i]["blood"] + "</td>");
                     tempHtml += ("<td>" + response[i]["wuyi_level"] + "</td>");
                     tempHtml += ("<td>" + response[i]["price"] + "</td>")
