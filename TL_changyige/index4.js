@@ -46,7 +46,7 @@ $(document).ready(function(){
                     tempHtml += ("<td>" + sex_dict[response[i]["sex"]] + "</td>");
                     tempHtml += ("<td>" + response[i]["rank"] + "</td>");
                     // 重楼红色字体
-                    if (response[i]["chonglou"]){
+                    if (response[i]["chonglou"]=="1"){
                         tempHtml += ("<td style='color: #FF0000;'>" + response[i]["score_equipment"] + "</td>");
                     }
                     else{
