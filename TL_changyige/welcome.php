@@ -38,6 +38,8 @@ if ($result->num_rows > 0) {
             'rank'=>$row["rank"],
             'score_equipment'=>$row["score_equipment"],
             'score_diamond'=>$row["score_diamond"],
+            'max_attack'=>$row["max_attack"],
+            'max_attribute'=>$row["max_attribute"],
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         );     
