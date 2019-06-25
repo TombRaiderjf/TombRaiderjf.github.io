@@ -52,8 +52,10 @@ if ($result->num_rows > 0) {
         if ($sex == "-1" or (int)$sex == $data['sex'] ) {
             if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
                 if ((int)$price >= $data['price']){
-                    if ((int)$score_equipment >= $data['score_equipment'])
-                        array_push($res, $data);
+                    if ((int)$score_equipment >= $data['score_equipment']){
+                        if ((int)$score_diamond <= $data['score_diamond'])
+                            array_push($res, $data);
+                    }
                 }
             }
         }
