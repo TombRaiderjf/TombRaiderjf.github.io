@@ -6,6 +6,14 @@
         <script type="text/javascript" src="jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">     
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="bootstrap-table/bootstrap-table.min.js"></script>
+        <!-- Latest compiled and minified Locales -->
+        <script src="bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+        
         <link rel="shortcut icon" href="image/favicon.ico">
         <link rel="stylesheet" type="text/css" href="index.css">     
         <script type="text/javascript" src="index4.js"></script>        
@@ -157,37 +165,26 @@
                 <a href="http://tl.cyg.changyou.com" target="_blank" style="padding-left: 20px;">天龙八部畅易阁官方网站</a>        
             </div>    
             </div>  
-            <div class="row">
-                <div class="col-lg-12" id="sort">
-                    <span>排序</span>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default">价格</button>
-                        <button type="button" class="btn btn-default">装备评分</button>
-                        <button type="button" class="btn btn-default">宝石评分</button>
-                        <button type="button" class="btn btn-default">血量</button>
-                    </div>
-                </div>
-            </div>
             <div class="row" id="data">
-            <div class="col-lg-12 col-sm-12">
-                <table class="table table-striped" id="table">
-                    <thead>
+            <div class="col-lg-12 col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                <table data-toggle="table" id="table">
+                    <!-- <thead>
                         <tr>
-                            <th>门派</th>
-                            <th>性别</th>
-                            <th>等级</th>
-                            <th>装备评分</th>
-                            <th>宝石评分</th>
-                            <th>属性</th>
-                            <th>血量</th>
-                            <th>武意</th>
-                            <th>价格</th>
-                            <th>链接</th>
+                            <th data-field="menpai">门派</th>
+                            <th data-field="sex">性别</th>
+                            <th data-field="rank" data-sortable="true">等级</th>
+                            <th data-field="score_equipment" data-sortable="true">装备评分</th>
+                            <th data-field="score_diamond" data-sortable="true">宝石评分</th>
+                            <th data-field="max_attack" data-sortable="true">属性</th>
+                            <th data-field="blood">血量</th>
+                            <th data-field="wuyi_level">武意</th>
+                            <th data-field="price" data-sortable="true">价格</th>
+                            <th data-field="link">链接</th>
                         </tr>
                     </thead>
                     <tbody>
                         
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
 
