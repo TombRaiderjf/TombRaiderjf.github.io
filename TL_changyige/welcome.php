@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         ); 
-        if ($sex != "-1" and (int)$sex != data['sex'] )    
+        if ($sex == "-1" or (int)$sex == data['sex'] )    
             array_push($res, $data);
         $count = $count + 1;
     }
