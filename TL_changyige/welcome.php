@@ -54,8 +54,12 @@ if ($result->num_rows > 0) {
                 if ((int)$price >= $data['price']){
                     if ((int)$score_equipment >= $data['score_equipment']){
                         if ((int)$score_diamond <= $data['score_diamond']){
-                            if ((int)$blood <= $data['blood'])
-                                array_push($res, $data);
+                            if ((int)$blood <= $data['blood']){
+                                if((int)$wuyi_level <= $data['wuyi_level'])
+
+                                    array_push($res, $data);
+                            }
+                                
                         }
                     }
                 }
