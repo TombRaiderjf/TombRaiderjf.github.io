@@ -49,8 +49,13 @@ if ($result->num_rows > 0) {
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         ); 
-        if ($sex == "-1" or (int)$sex == $data['sex'] )    
-            array_push($res, $data);
+        if ($sex == "-1" or (int)$sex == $data['sex'] ) {
+            if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
+                if ((int)$price >= $data['price']){
+                        array_push($res, $data);
+                }
+            }
+        }
         $count = $count + 1;
     }
     die(json_encode($res));
