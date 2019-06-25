@@ -51,9 +51,9 @@ if ($result->num_rows > 0) {
         ); 
         if ($sex == "-1" or (int)$sex == $data['sex'] ) {
             if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
-                if ((int)$price >= $data['price']){
+                // if ((int)$price >= $data['price']){
                         array_push($res, $data);
-                }
+                // }
             }
         }
         $count = $count + 1;
