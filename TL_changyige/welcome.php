@@ -2,7 +2,7 @@
 
 $chonglou = $_POST["chonglou"];
 $sex = $_POST["sex"]; 
-$max_price = $_POST["price"];
+$price = $_POST["price"];
 $menpai = $_POST["menpai"];
 $rank = $_POST["rank"];
 $score_equipment = $_POST["score_equipment"];
@@ -51,9 +51,9 @@ if ($result->num_rows > 0) {
         ); 
         if ($sex == "-1" or (int)$sex == $data['sex'] ) {
             if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
-                // if ((int)$price >= $data['price']){
+                if ((int)$price >= $data['price']){
                         array_push($res, $data);
-                // }
+                }
             }
         }
         $count = $count + 1;
