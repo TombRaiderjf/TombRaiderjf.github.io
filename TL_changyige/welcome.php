@@ -53,8 +53,10 @@ if ($result->num_rows > 0) {
             if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
                 if ((int)$price >= $data['price']){
                     if ((int)$score_equipment >= $data['score_equipment']){
-                        if ((int)$score_diamond <= $data['score_diamond'])
-                            array_push($res, $data);
+                        if ((int)$score_diamond <= $data['score_diamond']){
+                            if ((int)$blood <= $data['blood'])
+                                array_push($res, $data);
+                        }
                     }
                 }
             }
