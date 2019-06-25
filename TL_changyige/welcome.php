@@ -1,5 +1,16 @@
 <?php
 
+$chonglou = $_POST["chonglou"];
+$sex = $_POST["sex"]; 
+$max_price = $_POST["price"];
+$menpai = $_POST["menpai"];
+$rank = $_POST["rank"];
+$score_equipment = $_POST["score_equipment"];
+$score_diamond = $_POST["score_diamond"];
+$blood = $_POST["blood"];
+$wuyi_level = $_POST["wuyi_level"];
+
+
 $servername = "localhost";//MySQL默认为localhost，端口号3306
 $username = "root";
 $password = "hc7783au";
@@ -37,8 +48,9 @@ if ($result->num_rows > 0) {
             'max_attribute'=>$row["max_attribute"],
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
-        );     
-        array_push($res, $data);
+        ); 
+        if ($sex != "-1" and (int)$sex != data['sex'] )    
+            array_push($res, $data);
         $count = $count + 1;
     }
     die(json_encode($res));
