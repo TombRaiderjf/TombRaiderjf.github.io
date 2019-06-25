@@ -1,5 +1,6 @@
 <?php
 
+
 $chonglou = $_POST["chonglou"];
 $sex = $_POST["sex"]; 
 $price = $_POST["price"];
