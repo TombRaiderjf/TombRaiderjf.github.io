@@ -65,9 +65,31 @@ if ($result->num_rows > 0) {
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         ); 
-
-                                
-
+        if ($rank == "0")
+        {
+            if ($data['rank']>89)
+                continue;
+        }
+        else if($rank == "1"){
+            if($data['rank']<90 or $data['rank']>99)
+                continue;
+        }
+        else if($rank == "2"){
+            if($data['rank']<100 or $data['rank']>109)
+                continue;
+        }
+        else if($rank == "3"){
+            if($data['rank']<110)
+                continue;
+        }
+        if ($menpai != "-1"){
+            $flag = 0;
+            foreach($menpai as $value)
+                if($value == data['menpai'])
+                    $flag = 1;
+            if ($flag == 0)
+                continue; 
+        }
         array_push($res, $data);
 
         $count = $count + 1;
