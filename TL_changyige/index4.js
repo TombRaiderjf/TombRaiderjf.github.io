@@ -61,7 +61,7 @@ $(document).ready(function(){
             field: "link",
             title: "链接",
             formatter: function(value, row, index){
-                return "<a href=" + tl_link + value + ">购买</a>";
+                return "<a target='_blank' href='" + tl_link + value + "'>购买</a>";
             }
         }
     ];
@@ -158,7 +158,6 @@ $(document).ready(function(){
                         return { classes: strclass }
                     },
                 });
-                $("#table").bootstrapTable('load', modifiedData);
 
 
 

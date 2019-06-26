@@ -72,11 +72,8 @@ def getData(url):
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
     sql = "insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
-    # print(sql)
-    try:
-        cursor = db.cursor()
-        cursor.execute(sql)
-        cursor.close()
+    try:       
+        cursor.execute(sql)       
         db.commit()
     except:
         db.rollback()
@@ -94,13 +91,15 @@ def LoadUserAgents(uafile):
 
 
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
+cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
-raw_url = "http://tl.cyg.changyou.com/goods/selling?&page_num="
-for i in range(1, 20):
+raw_url = "http://tl.cyg.changyou.com/goods/selling&order_by=equip_point-desc?&page_num="
+for i in range(1, 100):
     getData(raw_url+str(i))
 t2 = datetime.now()
 print("time=", (t2-t1).seconds)
+cursor.close()
 db.close()
 
 # create table goods (id varchar(20) primary key,
