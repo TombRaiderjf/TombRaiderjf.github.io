@@ -27,7 +27,17 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT * FROM goods where price<=".$price." and score_equipment<=".$score_equipment." and score_diamond>=".$score_diamond;
+$sql = "SELECT * FROM goods where";
+if ($score_diamond != "0")
+    $sql = $sql." score_diamond>=".$score_diamond;
+if ($score_equipment != "10000000")
+    $sql = $sql." and score_equipment<=".$score_equipment;
+if ($price != "1000000")
+    $sql = $sql." and price<=".$price;
+if ($blood != "0")
+    $sql = $sql." and blood>=".$blood;
+if ($wuyi_level != "0")
+    $sql = $sql." and wuyi_level>=".$wuyi_level;
 if ($sex != "-1")
     $sql = $sql." and sex=".$sex;
 if ($chonglou != "-1")
@@ -55,22 +65,11 @@ if ($result->num_rows > 0) {
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         ); 
-        // if ($sex == "-1" or (int)$sex == $data['sex'] ) {
-            //if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
-                //if ((int)$price >= $data['price']){
-                  //  if ((int)$score_equipment >= $data['score_equipment']){
-                    //    if ((int)$score_diamond <= $data['score_diamond']){
-                            if ((int)$blood <= $data['blood']){
-                                if((int)$wuyi_level <= $data['wuyi_level'])
 
-                                    array_push($res, $data);
-                            }
                                 
-                        //}
-                    //}
-                //}
-            //}
-        // }
+
+        array_push($res, $data);
+
         $count = $count + 1;
     }
     die(json_encode($res));
