@@ -78,7 +78,7 @@ def addData(id, chonglou):
     }
     html = requests.get(url, headers=header)
     if html.status_code == 200:
-        soup_this = BeautifulSoup(html_this.content, "html.parser", from_encoding='utf-8')
+        soup_this = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
         sex_label = soup_this.find_all('div', class_='row2')[1]
         sex = sex_dict[sex_label.find('span', class_='span').get_text()]
         menpai_label = soup_this.find('span', class_='fn-other-menpai').get_text()
