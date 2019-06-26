@@ -27,9 +27,9 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT * FROM goods where";
+$sql = "SELECT * FROM goods";
 if ($score_diamond != "0")
-    $sql = $sql." score_diamond>=".$score_diamond;
+    $sql = $sql."where score_diamond>=".$score_diamond;
 if ($score_equipment != "10000000")
     $sql = $sql." and score_equipment<=".$score_equipment;
 if ($price != "1000000")
