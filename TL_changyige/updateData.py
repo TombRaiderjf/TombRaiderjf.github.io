@@ -105,6 +105,7 @@ def addData(id, chonglou):
             if int(ch) > max_attack:
                 max_attack = int(ch)
                 max_attribute = i
+        print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         
 
@@ -140,7 +141,7 @@ def updateData(dic, cl):
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
     sql = "insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
-    print(sql)
+    #print(sql)
     try:       
         cursor.execute(sql)       
         db.commit()
