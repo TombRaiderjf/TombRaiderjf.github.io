@@ -106,7 +106,7 @@ def addData(id, chonglou):
                 max_attack = int(ch)
                 max_attribute = i
 
-        write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
+        write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         
 
 def deleteUnexist(dic):
