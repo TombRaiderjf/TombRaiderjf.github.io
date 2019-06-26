@@ -71,7 +71,7 @@ def deleteData(id):
 
 def addData(id, chonglou):
     url = baseUrl + id
-    print(url)
+    # print(url)
     header = {
      'User-Agent': random.choice(agentHeaders)
     }
@@ -106,7 +106,7 @@ def addData(id, chonglou):
             if int(ch) > max_attack:
                 max_attack = int(ch)
                 max_attribute = i
-        print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
+        # print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         
 
@@ -156,6 +156,7 @@ cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 while(True):
     t1 = datetime.now()
+    print("start update url")
     newIds, newCl = updateId()
     updateData(newIds, newCl)
     t2 = datetime.now()
