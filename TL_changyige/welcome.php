@@ -28,21 +28,71 @@ if($connect->connect_error)
 }
 
 $sql = "SELECT * FROM goods";
-if ($score_diamond != "0")
-    $sql = $sql."where score_diamond>=".$score_diamond;
-if ($score_equipment != "10000000")
-    $sql = $sql." and score_equipment<=".$score_equipment;
-if ($price != "1000000")
-    $sql = $sql." and price<=".$price;
-if ($blood != "0")
-    $sql = $sql." and blood>=".$blood;
-if ($wuyi_level != "0")
-    $sql = $sql." and wuyi_level>=".$wuyi_level;
-if ($sex != "-1")
-    $sql = $sql." and sex=".$sex;
-if ($chonglou != "-1")
-    $sql = $sql." and chonglou=".$chonglou;
 
+$temp = 0;
+if ($score_diamond != "0"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."score_diamond>=".$score_diamond;
+}
+if ($score_equipment != "10000000"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."score_equipment<=".$score_equipment;
+}
+if ($price != "1000000"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."price<=".$price;
+}
+if ($blood != "0"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."blood>=".$blood;
+}
+if ($wuyi_level != "0"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."wuyi_level>=".$wuyi_level;
+}
+if ($sex != "-1"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."sex=".$sex;
+}
+if ($chonglou != "-1"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    $sql = $sql."chonglou=".$chonglou;
+}
 $result = $connect->query($sql);
 
 
