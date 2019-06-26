@@ -116,6 +116,7 @@ def deleteUnexist(dic):
     for item in data:
         if dic.get(item[0]) is None:
             deleteData(item[0])
+            print("delete unexist")
 
 
 def updateData(dic, cl):
@@ -126,11 +127,13 @@ def updateData(dic, cl):
             cursor.execute(search)  
             data = cursor.fetchone() 
             if data is None:
-                addData(key, cl[key])               
+                addData(key, cl[key])  
+                print("add new")             
             elif dic[key] != data['price']:
                 change = "update goods set price=" + dic[key] + " where id=" + key
                 cursor.execute(change)
                 db.commit()
+                print("change price!")
         except:
             db.rollback()
 
