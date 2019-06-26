@@ -72,6 +72,7 @@ def deleteData(id):
 
 def addData(id, chonglou):
     url = baseUrl + id
+    print(url)
     header = {
      'User-Agent': random.choice(agentHeaders)
     }
@@ -91,6 +92,7 @@ def addData(id, chonglou):
         score_diamond = btm_info[6].get_text()
         right = soup_this.find('div', class_='h422')
         blood = right.find('i', class_='fn-high-light').get_text()
+        price = soup_this.find('span', class_='ui-money-color').get_text()
         wuyi_level = 0
         wuyi_info = soup_this.find('script', id="tab_12").get_text()
         soup_wuyi = BeautifulSoup(wuyi_info, "html.parser", from_encoding='utf-8')
