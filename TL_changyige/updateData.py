@@ -32,7 +32,6 @@ def updateUrl(url, dic, cl):
     while(True):
         html = requests.get(url, headers=header)
         if html.status_code == 200:
-            print("success: get new page of item!")
             break
         time.sleep(1)
     soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
@@ -143,7 +142,6 @@ def updateData(dic, cl):
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
     sql = "insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
-    #print(sql)
     try:       
         cursor.execute(sql)       
         db.commit()
@@ -156,12 +154,12 @@ raw_url = "http://tl.cyg.changyou.com/goods/selling&order_by=equip_point-desc?&p
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
-# while(){
-t1 = datetime.now()
-newIds, newCl = updateId()
-updateData(newIds, newCl)
-t2 = datetime.now()
-print("one loop time=", (t2-t1).seconds)
-# }
+while(True):
+    t1 = datetime.now()
+    newIds, newCl = updateId()
+    updateData(newIds, newCl)
+    t2 = datetime.now()
+    print("one loop time=", (t2-t1).seconds)
+
 cursor.close()
 db.close()
