@@ -31,7 +31,7 @@ $sql = "SELECT * FROM goods";
 if ($sex != "-1")
     $sql = $sql." where sex=".$sex;
 if ($chonglou != "-1")
-    $sql = $sql." chonglou=".$chonglou;
+    $sql = $sql." and chonglou=".$chonglou;
 
 $result = $connect->query($sql);
 
