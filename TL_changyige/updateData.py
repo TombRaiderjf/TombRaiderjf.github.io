@@ -71,13 +71,11 @@ def getItemData(id):
 
 def deleteUnexist(dic):
     sql = "select id from goods"
-    cursor.execute(sql)
-    data = cursor.fetchone()
+    number = cursor.execute(sql)
+    data = cursor.fetchmany(number)
     for item in data:
         if dic.get(item['id']) is None:
-            remove = "delete from goods where id=" + item['id']
-            cursor.execute(remove)
-            db.commit()
+            deleteData(item['id'])
 
 
 def updateData(dic):
