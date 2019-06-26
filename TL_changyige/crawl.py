@@ -47,6 +47,10 @@ def getData(url):
             bottom = soup_this.find('div', class_='fn-fix-info')
             btm_info = bottom.find_all('span', class_='span')
             score_equipment = btm_info[1].get_text()
+
+            if int(score_equipment) < 50000:
+                return True
+
             score_diamond = btm_info[6].get_text()
             right = soup_this.find('div', class_='h422')
             blood = right.find('i', class_='fn-high-light').get_text()
@@ -68,6 +72,7 @@ def getData(url):
             write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         else:
             print("error")
+    return false
 
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
@@ -95,8 +100,10 @@ cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
 raw_url = "http://tl.cyg.changyou.com/goods/selling&order_by=equip_point-desc?&page_num="
-for i in range(1, 100):
-    getData(raw_url+str(i))
+for i in range(1, 20):
+    flag = getData(raw_url+str(i))
+    if flag:
+        break
 t2 = datetime.now()
 print("time=", (t2-t1).seconds)
 cursor.close()
