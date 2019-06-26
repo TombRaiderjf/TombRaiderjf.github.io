@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 import requests
 import random
-# import MySQLdb
+import MySQLdb
 
 def updateId():
     ids = {}
