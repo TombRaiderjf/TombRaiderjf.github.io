@@ -35,14 +35,16 @@ def getData(url):
 
 
 def updateData(id, price):
-    sql = "select * from goods where id=" + id
+    sql = "select price from goods where id=" + id
     try:       
         cursor.execute(sql)  
         data = cursor.fetchone() 
         if data != None:
-            if data
-            insert = "insert into goods value()"
-            print("insert new value " + str(id))
+            if data['price'] == price:
+                break
+            else:
+                insert = "update goods set price=" + price+ "where id=" + id
+                print("modified price value " + price)
         db.commit()
     except:
         db.rollback()

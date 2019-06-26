@@ -27,7 +27,7 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT * FROM goods";
+$sql = "SELECT * FROM goods where sex=" + $sex;
 $result = $connect->query($sql);
 
 
@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"]
         ); 
-        if ($sex == "-1" or (int)$sex == $data['sex'] ) {
+        // if ($sex == "-1" or (int)$sex == $data['sex'] ) {
             if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
                 if ((int)$price >= $data['price']){
                     if ((int)$score_equipment >= $data['score_equipment']){
@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
                     }
                 }
             }
-        }
+        // }
         $count = $count + 1;
     }
     die(json_encode($res));
