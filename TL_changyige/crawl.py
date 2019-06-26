@@ -31,6 +31,8 @@ def getData(url):
         name = item.find('span', class_='name').get_text()
         name_pure = name[1: len(name)-1]
         price = item.find('p', class_='price').get_text()[1:]
+        if int(price) < 500:
+            return True
         url_this = item.find('a', class_='r-img').get('href')
         id = url_this.split("=")[1]        
         split_str = name_pure.split(" ")
@@ -47,10 +49,6 @@ def getData(url):
             bottom = soup_this.find('div', class_='fn-fix-info')
             btm_info = bottom.find_all('span', class_='span')
             score_equipment = btm_info[1].get_text()
-
-            if int(score_equipment) < 50000:
-                return True
-
             score_diamond = btm_info[6].get_text()
             right = soup_this.find('div', class_='h422')
             blood = right.find('i', class_='fn-high-light').get_text()
@@ -72,7 +70,7 @@ def getData(url):
             write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
         else:
             print("error")
-    return false
+    return False
 
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
@@ -100,7 +98,7 @@ cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 t1 = datetime.now()
 raw_url = "http://tl.cyg.changyou.com/goods/selling&order_by=equip_point-desc?&page_num="
-for i in range(1, 20):
+for i in range(1, 1000):
     flag = getData(raw_url+str(i))
     if flag:
         break
