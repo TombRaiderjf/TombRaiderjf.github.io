@@ -27,11 +27,10 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-
+$sql = "SELECT * FROM goods";
 if ($sex != "-1")
-    $sql = "SELECT * FROM goods where sex=".$sex;
-else
-    $sql = "SELECT * FROM goods";
+    $sql = $sql." where sex=".$sex;
+
 $result = $connect->query($sql);
 
 
