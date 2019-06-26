@@ -74,8 +74,8 @@ def deleteUnexist(dic):
     number = cursor.execute(sql)
     data = cursor.fetchmany(number)
     for item in data:
-        if dic.get(item['id']) is None:
-            deleteData(item['id'])
+        if dic.get(item[0]) is None:
+            deleteData(item[0])
 
 
 def updateData(dic):
