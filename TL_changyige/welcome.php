@@ -27,7 +27,7 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT * FROM goods where sex=" + $sex;
+$sql = "SELECT * FROM goods where sex=" + string($sex);
 $result = $connect->query($sql);
 
 

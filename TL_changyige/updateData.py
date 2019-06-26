@@ -43,8 +43,11 @@ def updateData(id, price):
             if data['price'] == price:
                 break
             else:
-                insert = "update goods set price=" + price+ "where id=" + id
+                update = "update goods set price=" + price+ "where id=" + id
+                cursor.execute(update)
                 print("modified price value " + price)
+        else:
+            insert = "insert into goods value ()"
         db.commit()
     except:
         db.rollback()
