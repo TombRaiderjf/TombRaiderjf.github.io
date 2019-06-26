@@ -91,7 +91,6 @@ if ($result->num_rows > 0) {
                 continue; 
         }
         array_push($res, $data);
-
         $count = $count + 1;
     }
     die(json_encode($res));

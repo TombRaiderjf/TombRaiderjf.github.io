@@ -93,14 +93,16 @@ $(document).ready(function(){
         },
     });
 
-
-
     $("#check").click(function(){ 
         //确认post数据
         var menpai = [];
         $('input[name="menpai"]:checked').each(function(){//遍历每一个名字为menpai的复选框，其中选中的执行函数    
             menpai.push($(this).val());//将选中的值添加到数组menpai中    
         });
+        if (menpai.length == 0)
+            menpai.push("-1");
+        else if (menpai.length > 1 && menpai[0] == "-1")
+            menpai.shift();
         var sex = $('input:radio[name="sex"]:checked').val();
         var chonglou = $('input:radio[name="chonglou"]:checked').val();
         var price = $('input:radio[name="price"]:checked').val();
