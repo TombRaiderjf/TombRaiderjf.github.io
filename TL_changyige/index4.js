@@ -58,7 +58,7 @@ $(document).ready(function(){
             sortable: true
         },
         {
-            field: "link",
+            field: "id",
             title: "链接",
             formatter: function(value, row, index){
                 return "<a target='_blank' href='" + tl_link + value + "'>购买</a>";
