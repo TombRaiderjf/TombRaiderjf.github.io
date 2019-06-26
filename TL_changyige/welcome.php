@@ -28,8 +28,10 @@ if($connect->connect_error)
 }
 
 
-if ($sex != "-1")
-    $sql = "SELECT * FROM goods where sex=" + string($sex);
+if ($sex == "0")
+    $sql = "SELECT * FROM goods where sex=0";
+else if ($sex == "1")
+    $sql = "SELECT * FROM goods where sex=1";
 else
     $sql = "SELECT * FROM goods";
 $result = $connect->query($sql);
