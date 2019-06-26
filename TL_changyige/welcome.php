@@ -85,7 +85,7 @@ if ($result->num_rows > 0) {
         if ($menpai != "-1"){
             $flag = 0;
             foreach($menpai as $value)
-                if($value == data['menpai'])
+                if($value == $data['menpai'])
                     $flag = 1;
             if ($flag == 0)
                 continue; 
