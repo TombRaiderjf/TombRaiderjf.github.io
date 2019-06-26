@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
             if($data['rank']<110)
                 continue;
         }
-        if ($menpai != "-1"){
+        if ($menpai[0] != "-1"){
             $flag = 0;
             foreach($menpai as $value)
                 if($value == $data['menpai'])
