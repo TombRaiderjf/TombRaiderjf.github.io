@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin:http://tombraiderjf.com');
 
 $chonglou = $_POST["chonglou"];
 $sex = $_POST["sex"]; 
