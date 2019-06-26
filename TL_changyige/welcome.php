@@ -30,6 +30,8 @@ if($connect->connect_error)
 $sql = "SELECT * FROM goods";
 if ($sex != "-1")
     $sql = $sql." where sex=".$sex;
+if ($chonglou != "-1")
+    $sql = $sql." chonglou=".$chonglou;
 
 $result = $connect->query($sql);
 
@@ -54,7 +56,7 @@ if ($result->num_rows > 0) {
             'wuyi_level'=>$row["wuyi_level"]
         ); 
         // if ($sex == "-1" or (int)$sex == $data['sex'] ) {
-            if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
+            //if ($chonglou == "-1" or (int)$chonglou == $data['chonglou']){
                 if ((int)$price >= $data['price']){
                     if ((int)$score_equipment >= $data['score_equipment']){
                         if ((int)$score_diamond <= $data['score_diamond']){
@@ -67,7 +69,7 @@ if ($result->num_rows > 0) {
                         }
                     }
                 }
-            }
+            //}
         // }
         $count = $count + 1;
     }
