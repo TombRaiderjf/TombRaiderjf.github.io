@@ -28,7 +28,7 @@ if($connect->connect_error)
 }
 
 
-if ($sex == "-1")
+if ($sex != "-1")
     $sql = "SELECT * FROM goods where sex=".$sex;
 else
     $sql = "SELECT * FROM goods";
