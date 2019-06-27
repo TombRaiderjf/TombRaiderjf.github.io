@@ -80,7 +80,6 @@ $(document).ready(function(){
         pagination: true,
         pageNumber: 1,
         pageSize: 20, 
-        paginationVAlign: top,
         rowStyle: function (row, index) {
             //这里有5个取值代表5种颜色['active', 'success', 'info', 'warning', 'danger'];
             var strclass = "";
@@ -149,7 +148,6 @@ $(document).ready(function(){
                     pagination: true,
                     pageNumber: 1,
                     pageSize: 20, 
-                    paginationVAlign: top,
                     rowStyle: function (row, index) {
                         //这里有5个取值代表5种颜色['active', 'success', 'info', 'warning', 'danger'];
                         var strclass = "";

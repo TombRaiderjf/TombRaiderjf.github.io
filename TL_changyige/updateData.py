@@ -19,7 +19,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 500):
+    for j in range(1,800):
         updateUrl(raw_url + str(j), ids, cl)
     print("tatal data ", len(ids))
     return ids, cl
