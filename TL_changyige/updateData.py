@@ -19,13 +19,14 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 1000):
-        id = updateUrl(raw_url + str(j), ids, cl)
+    for j in range(1, 500):
+        flag = updateUrl(raw_url + str(j), ids, cl)
+        if flag:
+            break
     return ids, cl
 
 
 def updateUrl(url, dic, cl):
-    res = []
     header = {
      'User-Agent': random.choice(agentHeaders)
     }
@@ -46,7 +47,10 @@ def updateUrl(url, dic, cl):
                 cl[id] = 1
             else:
                 cl[id] = 0
+        else:
+            return True
     time.sleep(1)
+    return False
 
 
 # load the user-agent file into a list
@@ -115,10 +119,12 @@ def deleteUnexist(dic):
     sql = "select id from goods"
     number = cursor.execute(sql)
     data = cursor.fetchmany(number)
+    total = 0
     for item in data:
         if dic.get(item[0]) is None:
             deleteData(item[0])
-            print("delete unexist")
+            total += 1
+    print("delete unexist ", total)
 
 
 def updateData(dic, cl):
@@ -130,12 +136,12 @@ def updateData(dic, cl):
             data = cursor.fetchone() 
             if data is None:
                 addData(key, cl[key])  
-                print("add new")             
+                print("add new ", key)             
             elif dic[key] != data['price']:
                 change = "update goods set price=" + dic[key] + " where id=" + key
                 cursor.execute(change)
                 db.commit()
-                print("change price!")
+                print("change price ", key)
         except:
             db.rollback()
 
@@ -157,6 +163,7 @@ cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
 while(True):
     t1 = datetime.now()
+    print("------------------------")
     print("start update url")
     newIds, newCl = updateId()
     updateData(newIds, newCl)
