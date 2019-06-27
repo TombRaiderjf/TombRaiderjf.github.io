@@ -20,9 +20,8 @@ def updateId():
     ids = {}
     cl = {}
     for j in range(1, 500):
-        flag = updateUrl(raw_url + str(j), ids, cl)
-        if flag:
-            break
+        updateUrl(raw_url + str(j), ids, cl)
+    print("tatal data ", len(ids))
     return ids, cl
 
 
@@ -47,10 +46,7 @@ def updateUrl(url, dic, cl):
                 cl[id] = 1
             else:
                 cl[id] = 0
-        else:
-            return True
     time.sleep(1)
-    return False
 
 
 # load the user-agent file into a list
