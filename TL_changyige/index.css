@@ -28,7 +28,34 @@ body{
     margin-bottom: 2px;
 }
 
+#attention{
+    margin: 10px;
+    color: #FF5151;
+    float: left;
+    text-align: left;
+}
 
 
+#footer{
+    background: #f5f5f5;
+    color: #666;
+    padding: 10px;
+}
 
+.return-top{
+    background-color: #222;
+    padding: 4px;
+    color: #FFF;
+}
 
+#footer a:hover{
+    color: #555;
+}
+
+#footer a:active{
+    color: #444;
+}
+
+#footer a:visited{
+    color: #FFF;
+}

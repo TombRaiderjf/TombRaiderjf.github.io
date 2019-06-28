@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+    $("#back2top").click(function(){
+        $('body,html').animate({scrollTop: $("#header").offset().top},800);
+    });
+
     attribute_dict = {"0": "image/冰.bmp", "1": "image/火.bmp", "2": "image/玄.bmp", "3": "image/毒.bmp"};
     menpai_dict = {"0": "少林","1":"明教", "2":"丐帮", "3": "武当", "4":"峨嵋", "5": "星宿", "6":"天龙", "7": "天山", "8": "逍遥", "9": "慕容", "10": "唐门", "11": "鬼谷"};
     sex_dict = {"0": "女", "1": "男"};
@@ -73,10 +78,8 @@ $(document).ready(function(){
         striped: true,
         showHeader : true,
         showColumns : true,
-        showRefresh : true,
         columns: tableColumns,
         data: {},
-        search: true,
         pagination: true,
         pageNumber: 1,
         pageSize: 20, 
@@ -141,10 +144,8 @@ $(document).ready(function(){
                     striped: true,
                     showHeader : true,
                     showColumns : true,
-                    showRefresh : true,
                     columns: tableColumns,
                     data: response,
-                    search: true,
                     pagination: true,
                     pageNumber: 1,
                     pageSize: 20, 
