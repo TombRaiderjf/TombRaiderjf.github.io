@@ -28,7 +28,7 @@ def updateId():
     cl = {}
     for j in range(1, 2):
         updateUrl(raw_url + str(j), ids, cl)
-    print("tatal data ", len(ids))
+    print("total data ", len(ids))
     return ids, cl
 
 
@@ -41,7 +41,7 @@ def updateUrl(url, dic, cl):
         if html.status_code == 200:
             break
         time.sleep(1)
-    soup = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
+    soup = BeautifulSoup(html.content, "html.parser")
     goods = soup.find_all('li', class_='role-item')
     for item in goods:
         url_this = item.find('a', class_='r-img').get('href')
@@ -84,7 +84,7 @@ def addData(id, chonglou):
     }
     html = requests.get(url, headers=header)
     if html.status_code == 200:
-        soup_this = BeautifulSoup(html.content, "html.parser", from_encoding='utf-8')
+        soup_this = BeautifulSoup(html.content, "html.parser")
         sex_label = soup_this.find_all('div', class_='row2')[1]
         sex = sex_dict[sex_label.find('span', class_='span').get_text()]
         menpai_label = soup_this.find('span', class_='fn-other-menpai').get_text()
@@ -114,8 +114,9 @@ def addData(id, chonglou):
                 max_attack = int(ch)
                 max_attribute = i
         # 坐骑
-        ride = " "
-        while(True):
+        ride = ""
+        count_script = 1
+        while(True):          
             content = soup_this.find("script", id=str(count_script))
             if content is None:
                 break
@@ -123,7 +124,10 @@ def addData(id, chonglou):
             for key in ride_dict:
                 if text.find(key) != -1:
                     ride = ride + ride_dict[key] + " "
-        
+            count_script += 1
+        if ride == "":
+            ride = "NULL"
+        print(ride)
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
         time.sleep(1)
         
@@ -183,9 +187,13 @@ while(True):
     updateData(newIds, newCl)
     t2 = datetime.now()
     print("one loop time=", (t2-t1).seconds)
-
 cursor.close()
 db.close()
+
+
+newIds, newCl = updateId()
+for key in newIds:
+    addData(key, newCl[key])
 
 
 # create table goods_v2 (id bigint primary key,

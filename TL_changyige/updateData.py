@@ -21,7 +21,7 @@ def updateId():
     cl = {}
     for j in range(1,800):
         updateUrl(raw_url + str(j), ids, cl)
-    print("tatal data ", len(ids))
+    print("total data ", len(ids))
     return ids, cl
 
 
