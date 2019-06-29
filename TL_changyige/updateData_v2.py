@@ -123,7 +123,7 @@ def addData(id, chonglou):
             text = content.get_text()
             for key in ride_dict:
                 if text.find(key) != -1:
-                    ride = ride + ride_dict[key] + " "
+                    ride = ride + ride_dict[key]
             count_script += 1
         if ride == "":
             ride = "NULL"
