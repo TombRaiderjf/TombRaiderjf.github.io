@@ -68,7 +68,7 @@ def LoadUserAgents(uafile):
 
 
 def deleteData(id):
-    sql = "delete from goods_v2 where id=" + str(id)
+    sql = "delete from goods_v2 where id=" + id
     try:
         cursor.execute(sql)
         db.commit()
@@ -124,8 +124,8 @@ def deleteUnexist(dic):
     data = cursor.fetchmany(number)
     total = 0
     for item in data:
-        if dic.get(item[0]) is None:
-            deleteData(item[0])
+        if dic.get(str(item[0]) is None:
+            deleteData(str(item[0]))
             total += 1
     print("delete unexist ", total)
 
