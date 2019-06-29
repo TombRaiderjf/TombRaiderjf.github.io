@@ -115,16 +115,15 @@ def addData(id, chonglou):
                 max_attribute = i
         # 坐骑
         ride = ""
-        count_script = 1
-        while(True):          
-            content = soup_this.find("script", id=str(count_script))
+
+        for i in range(1, 300):        
+            content = soup_this.find("script", id=str())
             if content is None:
-                break
+                continue
             text = content.get_text()
             for key in ride_dict:
                 if text.find(key) != -1:
                     ride = ride + ride_dict[key]
-            count_script += 1
         if ride == "":
             ride = "NULL"
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
