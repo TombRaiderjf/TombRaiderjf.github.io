@@ -124,7 +124,7 @@ def deleteUnexist(dic):
     data = cursor.fetchmany(number)
     total = 0
     for item in data:
-        if dic.get(str(item[0]) is None:
+        if dic.get(str(item[0])) is None:
             deleteData(str(item[0]))
             total += 1
     print("delete unexist ", total)
