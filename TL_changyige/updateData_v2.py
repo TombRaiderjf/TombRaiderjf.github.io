@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-# 定时更新Mysql数据表
+# Version 2 加入坐骑数据
 
 import sys
 from bs4 import BeautifulSoup
@@ -26,7 +26,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 10):
+    for j in range(1, 2):
         updateUrl(raw_url + str(j), ids, cl)
     print("tatal data ", len(ids))
     return ids, cl
@@ -138,8 +138,7 @@ def updateData(dic, cl):
             cursor.execute(search)  
             data = cursor.fetchone() 
             if data is None:
-                addData(key, cl[key])  
-                print("add new ", key)             
+                addData(key, cl[key])               
             elif dic[key] != data['price']:
                 change = "update goods_v2 set price=" + dic[key] + " where id=" + key
                 cursor.execute(change)
@@ -151,10 +150,11 @@ def updateData(dic, cl):
 
 
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
-    sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
+    sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, "", "")
     try:       
         cursor.execute(sql)       
         db.commit()
+        print("add new ", id)
     except:
         db.rollback()
 
