@@ -32,12 +32,12 @@ $(document).ready(function(){
             sortable: true 
         },
         {
-            field: "se",
+            field: "score_equipment",
             title: "装备评分",
             sortable: true         
         },
         {
-            field: "sd",
+            field: "score_diamond",
             title: "宝石评分",
             sortable: true        
         },
