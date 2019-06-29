@@ -68,7 +68,7 @@ def LoadUserAgents(uafile):
 
 
 def deleteData(id):
-    sql = "delete from goods_v2 where id=" + id
+    sql = "delete from goods_v2 where id=" + str(id)
     try:
         cursor.execute(sql)
         db.commit()
