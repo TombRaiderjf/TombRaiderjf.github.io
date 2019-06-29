@@ -4,7 +4,7 @@ $(document).ready(function(){
         $('body,html').animate({scrollTop: $("#header").offset().top},800);
     });
 
-    ride_dict = {"沧澜羽翼": "a", "金羽": "b", "梦灵仙驹": "c", "青翼战龙": "d", "添福锦鳞": "e", "水碧飞鸢": "f", "绒雪神牛": "g", "黑天马": "h", "紫电": "i", "月白龙马": "j", "四喜送鲤台": "k", "绝云焱龙": "l", "熔岩魔犀": "m"}
+    ride_dict = {'a': "沧澜羽翼" , 'b': "金羽", 'c':"梦灵仙驹", 'd':"青翼战龙", 'e': "添福锦鳞", 'f':"水碧飞鸢", 'g':"绒雪神牛", 'h':"黑天马", 'i':"紫电", 'j':"月白龙马", 'k':"四喜送鲤台", 'l':"绝云焱龙", 'm':"熔岩魔犀", 'n':"绛紫飞鸢", 'o':"梦幻仙驹", 'p':"霸世羽龙"}
 
     attribute_dict = {"0": "image/冰.bmp", "1": "image/火.bmp", "2": "image/玄.bmp", "3": "image/毒.bmp"};
     menpai_dict = {"0": "少林","1":"明教", "2":"丐帮", "3": "武当", "4":"峨嵋", "5": "星宿", "6":"天龙", "7": "天山", "8": "逍遥", "9": "慕容", "10": "唐门", "11": "鬼谷"};
@@ -67,6 +67,19 @@ $(document).ready(function(){
         {
             field: "ride",
             title: "坐骑",
+            formatter: function(value, row, index){
+                if (value == 'NULL'){
+                    return "无";
+                }
+                else{
+                    res = ""
+                    for(var i=0; i<value.length; i++)
+                    {
+                        res += ("<img src='image/坐骑/" + ride_dict[value[i]] + ".jpg' width=19px>");
+                    }
+                    return res;
+                }
+            }
         },
         {
             field: "id",
