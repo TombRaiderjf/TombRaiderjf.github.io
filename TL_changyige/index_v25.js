@@ -72,10 +72,10 @@ $(document).ready(function(){
                     return "无";
                 }
                 else{
-                    res = ""
+                    res = "";
                     for(var i=0; i<value.length; i++)
                     {
-                        res += ("<img src='image/坐骑/" + ride_dict[value[i]] + ".jpg' width=19px>");
+                        res += ("<img src='image/坐骑/" + ride_dict[value[i]] + ".jpg' width=19px> &nbsp;");
                     }
                     return res;
                 }
