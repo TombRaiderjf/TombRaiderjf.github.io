@@ -113,8 +113,18 @@ def addData(id, chonglou):
             if int(ch) > max_attack:
                 max_attack = int(ch)
                 max_attribute = i
-        #print(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
-        write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level)
+        # 坐骑
+        ride = " "
+        while(True):
+            content = soup_this.find("script", id=str(count_script))
+            if content is None:
+                break
+            text = content.get_text()
+            for key in ride_dict:
+                if text.find(key) != -1:
+                    ride = ride + ride_dict[key] + " "
+        
+        write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
         time.sleep(1)
         
 
@@ -149,9 +159,8 @@ def updateData(dic, cl):
 
 
 
-def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level):
-    sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, "1", "2")
-    print(sql)
+def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride):
+    sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride, "2")
     try:       
         cursor.execute(sql)       
         db.commit()
