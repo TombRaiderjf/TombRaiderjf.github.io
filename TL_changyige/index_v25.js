@@ -75,7 +75,7 @@ $(document).ready(function(){
                     res = "";
                     for(var i=0; i<value.length; i++)
                     {
-                        res += ("<img src='image/坐骑/" + ride_dict[value[i]] + ".jpg' width=19px title='" + ride_dict[value[i]] + "'>");
+                        res += ("<img src='image/坐骑/" + ride_dict[value[i]] + ".jpg' width=19px>");
                     }
                     return res;
                 }
