@@ -42,7 +42,7 @@ if ($ride != "-1"){
         $sql = $sql."ride <> 0";
     }
     else{
-        $sql = $sql."ride=0";
+        $sql = $sql."ride='0'";
     }
 }
 
