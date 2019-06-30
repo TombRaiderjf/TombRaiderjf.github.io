@@ -68,7 +68,7 @@ $(document).ready(function(){
             field: "ride",
             title: "坐骑",
             formatter: function(value, row, index){
-                if (value == 'NULL'){
+                if (value == '0'){
                     return "无";
                 }
                 else{
