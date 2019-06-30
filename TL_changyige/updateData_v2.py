@@ -26,7 +26,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 5):
+    for j in range(1, 3):
         updateUrl(raw_url + str(j), ids, cl)
     print("total data ", len(ids))
     return ids, cl
@@ -119,7 +119,6 @@ def addData(id, chonglou):
                 max_attribute = i
         # 坐骑
         ride = ""
-        # count_script = 1
         for num in range(1, 300):          
             content = soup_this.find("script", id=str(num))
             if content is None:
@@ -128,11 +127,10 @@ def addData(id, chonglou):
             for key in ride_dict:
                 if text.find(key) != -1:
                     ride = ride + ride_dict[key]
-        #     count_script += 1
         if ride == "":
-            ride = "NULL"
+            ride = "0"
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
-        time.sleep(0.5)
+        time.sleep(0.2)
         
 
 def deleteUnexist(dic):

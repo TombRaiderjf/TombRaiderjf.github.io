@@ -39,10 +39,10 @@ if ($ride != "-1"){
     else
         $sql = $sql." and ";
     if ($ride == "1"){
-        $sql = $sql."ride <> NULL";
+        $sql = $sql."ride <> 0";
     }
     else{
-        $sql = $sql."ride=NULL";
+        $sql = $sql."ride=0";
     }
 }
 
