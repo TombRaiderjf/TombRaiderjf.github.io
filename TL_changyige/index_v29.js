@@ -101,7 +101,7 @@ $(document).ready(function(){
         data: {},
         pagination: true,
         pageNumber: 1,
-        pageSize: 20, 
+        pageSize: 25, 
         rowStyle: function (row, index) {
             //这里有5个取值代表5种颜色['active', 'success', 'info', 'warning', 'danger'];
             var strclass = "";
@@ -169,7 +169,7 @@ $(document).ready(function(){
                     data: response,
                     pagination: true,
                     pageNumber: 1,
-                    pageSize: 20, 
+                    pageSize: 25, 
                     rowStyle: function (row, index) {
                         //这里有5个取值代表5种颜色['active', 'success', 'info', 'warning', 'danger'];
                         var strclass = "";
