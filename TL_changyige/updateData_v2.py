@@ -26,7 +26,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 3):
+    for j in range(1, 100):
         updateUrl(raw_url + str(j), ids, cl)
     print("total data ", len(ids))
     return ids, cl
@@ -130,7 +130,7 @@ def addData(id, chonglou):
         if ride == "":
             ride = "0"
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
-        time.sleep(0.2)
+        #time.sleep(0.2)
         
 
 def deleteUnexist(dic):
