@@ -10,7 +10,7 @@ $score_equipment = $_POST["score_equipment"];
 $score_diamond = $_POST["score_diamond"];
 $blood = $_POST["blood"];
 $wuyi_level = $_POST["wuyi_level"];
-
+$ride = $_POST["ride"];
 
 $servername = "localhost";//MySQL默认为localhost，端口号3306
 $username = "root";
@@ -30,6 +30,23 @@ if($connect->connect_error)
 $sql = "SELECT * FROM goods_v2";
 
 $temp = 0;
+
+if ($ride != "-1"){
+    if ($temp == 0){
+        $sql = $sql." where ";
+        $temp = 1;
+    }
+    else
+        $sql = $sql." and ";
+    if ($ride == "1"){
+        $sql = $sql."ride is not NULL";
+    }
+    else{
+        $sql = $sql."ride is NULL";
+    }
+}
+
+
 if ($score_diamond != "0"){
     if ($temp == 0){
         $sql = $sql." where ";
@@ -147,7 +164,7 @@ if ($result->num_rows > 0) {
     die(json_encode($res));
 }
 else {
-    echo "0 结果";
+    echo array();
 }
 $connect->close();
 

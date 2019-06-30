@@ -133,6 +133,7 @@ $(document).ready(function(){
         var score_diamond = $('input:radio[name="score_diamond"]:checked').val();
         var blood = $('input:radio[name="blood"]:checked').val();
         var wuyi_level = $('input:radio[name="wuyi_level"]:checked').val();
+        var ride = $('input:radio[name="ride"]:checked').val();
         var postData = {
             "sex": sex, 
             "chonglou": chonglou, 
@@ -142,7 +143,8 @@ $(document).ready(function(){
             "score_equipment": score_equipment, 
             "score_diamond": score_diamond,
             "blood": blood,
-            "wuyi_level": wuyi_level
+            "wuyi_level": wuyi_level,
+            "ride": ride
         };
 
         console.log(postData);
