@@ -124,9 +124,13 @@ def addData(id, chonglou):
             if content is None:
                 continue
             text = content.get_text()
+            temp_ride = ""
             for key in ride_dict:
                 if text.find(key) != -1:
-                    ride = ride + ride_dict[key]
+                    temp_ride = temp_ride + ride_dict[key]
+            if len(temp_ride) > 1:
+                temp_ride = ""
+            ride = ride + temp_ride
         if ride == "":
             ride = "0"
         write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride)
