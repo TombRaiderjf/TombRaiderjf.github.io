@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-# Version 2 加入坐骑数据
+# 采集公示区数据
 
 import sys
 from bs4 import BeautifulSoup
@@ -26,7 +26,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId():
     ids = {}
     cl = {}
-    for j in range(1, 1000):
+    for j in range(1, 30):
         updateUrl(raw_url + str(j), ids, cl)
     print("total data ", len(ids))
     return ids, cl
@@ -68,7 +68,7 @@ def LoadUserAgents(uafile):
 
 
 def deleteData(id):
-    sql = "delete from goods_v2 where id=" + id
+    sql = "delete from sale where id=" + id
     try:
         cursor.execute(sql)
         db.commit()
@@ -85,7 +85,7 @@ def addData(id, chonglou):
     html = requests.get(url, headers=header)
     if html.status_code == 200:
         soup_this = BeautifulSoup(html.content, "html.parser")
-        if soup_this.find('a', class_='btn-buy') is None:
+        if soup_this.find('div', class_='goods-lock') is None:
             time.sleep(0.5)
             print("already unexist!")
             return
@@ -134,7 +134,7 @@ def addData(id, chonglou):
         
 
 def deleteUnexist(dic):
-    sql = "select id from goods_v2"
+    sql = "select id from sale"
     number = cursor.execute(sql)
     data = cursor.fetchmany(number)
     total = 0
@@ -148,14 +148,14 @@ def deleteUnexist(dic):
 def updateData(dic, cl):
     deleteUnexist(dic)
     for key in dic:
-        search = "select id price from goods_v2 where id=" + key
+        search = "select id price from sale where id=" + key
         try:       
             cursor.execute(search)  
             data = cursor.fetchone() 
             if data is None:
                 addData(key, cl[key])               
             elif dic[key] != data['price']:
-                change = "update goods_v2 set price=" + dic[key] + " where id=" + key
+                change = "update sale set price=" + dic[key] + " where id=" + key
                 cursor.execute(change)
                 db.commit()
                 print("change price ", key)
@@ -167,7 +167,7 @@ def updateData(dic, cl):
 def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, ride):
     # sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, 'a', "NULL")
     try:       
-        cursor.execute("insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level,  "NULL", ride))       
+        cursor.execute("insert into sale value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level,  "NULL", ride))       
         db.commit()
         print("add new ", id)
     except:
@@ -176,7 +176,7 @@ def write_data(id, sex, chonglou, price, menpai, rank_pure, score_equipment, sco
 
 
 baseUrl = "http://tl.cyg.changyou.com/goods/char_detail?serial_num="
-raw_url = "http://tl.cyg.changyou.com/goods/selling&order_by=equip_point-desc?&page_num="
+raw_url = "http://tl.cyg.changyou.com/goods/public?&order_by=equip_point-desc&page_num="
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
@@ -197,7 +197,7 @@ for key in newIds:
     addData(key, newCl[key])
 
 
-# create table goods_v2 (id bigint primary key,
+# create table sale (id bigint primary key,
 # sex tinyint not null,
 # chonglou tinyint not null,
 # price int not null,
