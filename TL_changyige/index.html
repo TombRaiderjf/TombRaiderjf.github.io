@@ -18,7 +18,7 @@
         
         <link rel="shortcut icon" href="image/favicon.ico">
         <link rel="stylesheet" type="text/css" href="index.css">     
-        <script type="text/javascript" src="index_v29.js"></script>  
+        <script type="text/javascript" src="index_v30.js"></script>  
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
@@ -38,6 +38,15 @@
             <div class="row" id="selector">
             <div class="col-lg-12 col-sm-12">
                 <form method="POST" action="##" onsubmit="return false" id="form">
+                    <div class="condition">
+                        <label class="radio-inline"><b>交易状态</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="0" checked>交易区
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="1">公示区
+                        </label>
+                    </div>
                     <div class="condition">
                         <label class="radio-inline"><b>性别</b></label>
                         <label class="radio-inline">

@@ -11,6 +11,7 @@ $score_diamond = $_POST["score_diamond"];
 $blood = $_POST["blood"];
 $wuyi_level = $_POST["wuyi_level"];
 $ride = $_POST["ride"];
+$condition = $_POST["condition"];
 
 $servername = "localhost";//MySQL默认为localhost，端口号3306
 $username = "root";
@@ -27,7 +28,12 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
-$sql = "SELECT * FROM goods_v2";
+if ($condition == "0"){
+    $sql = "SELECT * FROM goods_v2";
+}
+else{
+    $sql = "SELECT * FROM sale";
+}
 
 $temp = 0;
 

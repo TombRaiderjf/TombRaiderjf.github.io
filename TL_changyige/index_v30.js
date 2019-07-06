@@ -134,6 +134,7 @@ $(document).ready(function(){
         var blood = $('input:radio[name="blood"]:checked').val();
         var wuyi_level = $('input:radio[name="wuyi_level"]:checked').val();
         var ride = $('input:radio[name="ride"]:checked').val();
+        var condition = $('input:radio[name="condition"]:checked').val();
         var postData = {
             "sex": sex, 
             "chonglou": chonglou, 
@@ -144,7 +145,8 @@ $(document).ready(function(){
             "score_diamond": score_diamond,
             "blood": blood,
             "wuyi_level": wuyi_level,
-            "ride": ride
+            "ride": ride,
+            "condition": condition
         };
 
         console.log(postData);
