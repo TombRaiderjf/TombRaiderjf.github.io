@@ -136,15 +136,15 @@
 
 
   <meta name="description" content="昨天立了flag，今天要学SfM过程，大概看了看SfM的各个文件目录，build&amp;amp;make出来的linux-release-x86大概叫这个名字的文件夹里面有很多可执行文件，直接根据文档里给的参数跑就可以，要搞源码的话实在是搞不起，太复杂，太庞大了。下面的代码是从他给出的easy to use的python脚本中截取的核心代码，注释的也很赞，清晰明确。 SfM global pipelin">
-<meta name="keywords" content="SfM">
+<meta name="keywords" content="SfM,三维重建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SfM实现过程分析">
 <meta property="og:url" content="http://tombraiderjf.com/2018/01/03/SfM实现过程分析/index.html">
-<meta property="og:site_name" content="Lara Croft">
+<meta property="og:site_name" content="阿茶的Blog">
 <meta property="og:description" content="昨天立了flag，今天要学SfM过程，大概看了看SfM的各个文件目录，build&amp;amp;make出来的linux-release-x86大概叫这个名字的文件夹里面有很多可执行文件，直接根据文档里给的参数跑就可以，要搞源码的话实在是搞不起，太复杂，太庞大了。下面的代码是从他给出的easy to use的python脚本中截取的核心代码，注释的也很赞，清晰明确。 SfM global pipelin">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://tombraiderjf.com/img/Free-Converter.com-geometric_matches-22732642.png">
-<meta property="og:updated_time" content="2019-04-25T04:38:56.585Z">
+<meta property="og:updated_time" content="2019-07-08T03:35:00.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SfM实现过程分析">
 <meta name="twitter:description" content="昨天立了flag，今天要学SfM过程，大概看了看SfM的各个文件目录，build&amp;amp;make出来的linux-release-x86大概叫这个名字的文件夹里面有很多可执行文件，直接根据文档里给的参数跑就可以，要搞源码的话实在是搞不起，太复杂，太庞大了。下面的代码是从他给出的easy to use的python脚本中截取的核心代码，注释的也很赞，清晰明确。 SfM global pipelin">
@@ -166,7 +166,7 @@
   };
 </script>
 
-  <title>SfM实现过程分析 | Lara Croft</title>
+  <title>SfM实现过程分析 | 阿茶的Blog</title>
   
 
 
@@ -225,13 +225,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Lara Croft</span>
+        <span class="site-title">阿茶的Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <h1 class="site-subtitle" itemprop="description">拖延症晚期患者</h1>
+        <h1 class="site-subtitle" itemprop="description">个人博客</h1>
       
     
     
@@ -442,12 +442,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿茶">
-      <meta itemprop="description" content="我大概是一条咸鱼吧，被一只阿猫叼走了~">
+      <meta itemprop="description" content="这是阿茶的hexo个人博客, 包含各种技术记录和生活分享~">
       <meta itemprop="image" content="/img/head.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lara Croft">
+      <meta itemprop="name" content="阿茶的Blog">
     </span>
 
     
@@ -498,7 +498,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-25 12:38:56" itemprop="dateModified" datetime="2019-04-25T12:38:56+08:00">2019-04-25</time>
+                <time title="修改时间：2019-07-08 11:35:00" itemprop="dateModified" datetime="2019-07-08T11:35:00+08:00">2019-07-08</time>
               
             
           </span>
@@ -661,6 +661,8 @@
           
             <a href="/tags/SfM/" rel="tag"># SfM</a>
           
+            <a href="/tags/三维重建/" rel="tag"># 三维重建</a>
+          
         </div>
       
 
@@ -757,7 +759,7 @@
               <img class="site-author-image" itemprop="image" src="/img/head.jpg" alt="阿茶">
             
               <p class="site-author-name" itemprop="name">阿茶</p>
-              <div class="site-description motion-element" itemprop="description">我大概是一条咸鱼吧，被一只阿猫叼走了~</div>
+              <div class="site-description motion-element" itemprop="description">这是阿茶的hexo个人博客, 包含各种技术记录和生活分享~</div>
           </div>
 
           
@@ -953,7 +955,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

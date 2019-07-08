@@ -136,16 +136,17 @@
 
 
   <meta name="description" content="点云重建mesh是个很头疼的过程，就meshlab中的方法说说. Screened Poisson Surface：有向点集生成封闭曲面，简单地从二维来看，就是四叉树确定边界，三维空间中，就是八叉树确定表面，其中八叉树深度（octree depth）决定了重建得到曲面的分辨率，重建mesh的face数目随depth指数增长，重建时间也是如此。我理解的不够深入，还是贴上别人写的分析吧 -&amp;gt; 泊">
+<meta name="keywords" content="三维重建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="点云重建mesh">
 <meta property="og:url" content="http://tombraiderjf.com/2018/01/04/点云重建mesh/index.html">
-<meta property="og:site_name" content="Lara Croft">
+<meta property="og:site_name" content="阿茶的Blog">
 <meta property="og:description" content="点云重建mesh是个很头疼的过程，就meshlab中的方法说说. Screened Poisson Surface：有向点集生成封闭曲面，简单地从二维来看，就是四叉树确定边界，三维空间中，就是八叉树确定表面，其中八叉树深度（octree depth）决定了重建得到曲面的分辨率，重建mesh的face数目随depth指数增长，重建时间也是如此。我理解的不够深入，还是贴上别人写的分析吧 -&amp;gt; 泊">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://tombraiderjf.com/img/mesh0%20(1).png">
 <meta property="og:image" content="http://tombraiderjf.com/img/mesh0%20(2).png">
 <meta property="og:image" content="http://tombraiderjf.com/img/castle.bmp">
-<meta property="og:updated_time" content="2019-04-25T04:38:56.587Z">
+<meta property="og:updated_time" content="2019-07-08T03:33:47.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="点云重建mesh">
 <meta name="twitter:description" content="点云重建mesh是个很头疼的过程，就meshlab中的方法说说. Screened Poisson Surface：有向点集生成封闭曲面，简单地从二维来看，就是四叉树确定边界，三维空间中，就是八叉树确定表面，其中八叉树深度（octree depth）决定了重建得到曲面的分辨率，重建mesh的face数目随depth指数增长，重建时间也是如此。我理解的不够深入，还是贴上别人写的分析吧 -&amp;gt; 泊">
@@ -167,7 +168,7 @@
   };
 </script>
 
-  <title>点云重建mesh | Lara Croft</title>
+  <title>点云重建mesh | 阿茶的Blog</title>
   
 
 
@@ -226,13 +227,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Lara Croft</span>
+        <span class="site-title">阿茶的Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <h1 class="site-subtitle" itemprop="description">拖延症晚期患者</h1>
+        <h1 class="site-subtitle" itemprop="description">个人博客</h1>
       
     
     
@@ -443,12 +444,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阿茶">
-      <meta itemprop="description" content="我大概是一条咸鱼吧，被一只阿猫叼走了~">
+      <meta itemprop="description" content="这是阿茶的hexo个人博客, 包含各种技术记录和生活分享~">
       <meta itemprop="image" content="/img/head.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lara Croft">
+      <meta itemprop="name" content="阿茶的Blog">
     </span>
 
     
@@ -499,7 +500,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-25 12:38:56" itemprop="dateModified" datetime="2019-04-25T12:38:56+08:00">2019-04-25</time>
+                <time title="修改时间：2019-07-08 11:33:47" itemprop="dateModified" datetime="2019-07-08T11:33:47+08:00">2019-07-08</time>
               
             
           </span>
@@ -637,6 +638,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/三维重建/" rel="tag"># 三维重建</a>
+          
+        </div>
+      
 
       
       
@@ -722,7 +729,7 @@
               <img class="site-author-image" itemprop="image" src="/img/head.jpg" alt="阿茶">
             
               <p class="site-author-name" itemprop="name">阿茶</p>
-              <div class="site-description motion-element" itemprop="description">我大概是一条咸鱼吧，被一只阿猫叼走了~</div>
+              <div class="site-description motion-element" itemprop="description">这是阿茶的hexo个人博客, 包含各种技术记录和生活分享~</div>
           </div>
 
           
@@ -918,7 +925,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
