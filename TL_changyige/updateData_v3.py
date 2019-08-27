@@ -169,20 +169,21 @@ raw_url = ["http://tl.cyg.changyou.com/goods/selling?world_id=0&have_chosen=&pag
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
-# while(True):
-#     t1 = datetime.now()
-#     print("------------------------")
-#     print("start update url")
-#     newIds= updateId()
-#     updateData(newIds, newCl)
-#     t2 = datetime.now()
-#     print("one loop time=", (t2-t1).seconds)
+while(True):
+    forsale = 0
+    t1 = datetime.now()
+    print("------------------------")
+    print("start update url")
+    newIds= updateId(forsale)
+    updateData(newIds, forsale)
+    t2 = datetime.now()
+    print("one loop time=", (t2-t1).seconds)
 
 
 
-newIds = updateId()
-for key in newIds:
-    addData(key)
+# newIds = updateId()
+# for key in newIds:
+#     addData(key)
 cursor.close()
 db.close()
 
