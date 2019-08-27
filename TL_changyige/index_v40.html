@@ -1,0 +1,242 @@
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">     
+        <title>天龙八部畅易阁角色搜索网</title>    
+        <meta name="keywords" content="天龙八部角色搜索, 角色筛选">
+        <meta name="description" content="天龙八部畅易阁角色搜索网站，汇总畅易阁交易区商品，开启多元化类别搜索">
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">     
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="bootstrap-table/bootstrap-table.min.js"></script>
+        <!-- Latest compiled and minified Locales -->
+        <script src="bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+        
+        <link rel="shortcut icon" href="image/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="index.css">     
+        <script type="text/javascript" src="index_v40.js"></script>  
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- tlAdds -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5663118915128759" data-ad-slot="3094986997" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div class="container">
+            <div class="row" id="header">
+                <div class="col-lg-12 col-sm-12">
+                    <h1>天唐八部畅易阁角色查询网</h1>
+                </div>
+
+            </div>
+            <div class="row" id="selector">
+            <div class="col-lg-12 col-sm-12">
+                <form method="POST" action="##" onsubmit="return false" id="form">
+                    <div class="condition">
+                        <label class="radio-inline"><b>交易状态</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="0" checked>交易区
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="1">公示区
+                        </label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>性别</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="-1" checked>不限
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="1">男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="0">女
+                        </label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>重楼</b></label>
+                        <label class="radio-inline"><input type="radio" name="chonglou" value="-1" checked>不限</label>
+                        <label class="radio-inline"><input type="radio" name="chonglou" value="1">有</label>
+                        <label class="radio-inline"><input type="radio" name="chonglou" value="0">无</label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>稀有坐骑</b></label>
+                        <label class="radio-inline"><input type="radio" name="ride" value="-1">不限</label>
+                        <label class="radio-inline"><input type="radio" name="ride" value="1" checked>有</label>
+                        <label class="radio-inline"><input type="radio" name="ride" value="0">无</label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>稀有时装</b></label>
+                        <label class="radio-inline"><input type="radio" name="clothes" value="-1">不限</label>
+                        <label class="radio-inline"><input type="radio" name="clothes" value="1" checked>有</label>
+                        <label class="radio-inline"><input type="radio" name="clothes" value="0">无</label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>价格</b></label>
+                        <label class="radio-inline"><input type="radio" name="price" checked value="1000000">不限</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="1000">1000以下</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="3000">3000以下</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="10000">10000以下</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="25000">25000以下</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="50000">50000以下</label>
+                        <label class="radio-inline"><input type="radio" name="price" value="100000">100000以下</label>
+                    </div>
+                    
+                    <div class="condition">
+                        <label class="checkbox-inline"><b>门派</b></label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="-1" checked>不限</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="0">少林</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="1">明教</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="2">丐帮</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="3">武当</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="4">峨眉</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="5">星宿</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="6">天龙</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="7">天山</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="8">逍遥</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="9">慕容</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="10">唐门</label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="menpai" value="11">鬼谷</label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>等级</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="rank" value="-1" checked>不限</label>                    
+                        <label class="radio-inline">
+                            <input type="radio" name="rank" value="0">80-89</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="rank" value="1">90-99</label>    
+                        <label class="radio-inline">
+                            <input type="radio" name="rank" value="2">100-109</label>  
+                        <label class="radio-inline">
+                            <input type="radio" name="rank" value="3">110-119</label>  
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>装备评分</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="score_equipment" value="10000000" checked>不限</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="score_equipment" value="100000">10w以下</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="score_equipment" value="200000">20w以下</label>    
+                        <label class="checkbox-inline">
+                            <input type="radio" name="score_equipment" value="300000">30w以下</label>  
+                        <label class="radio-inline">
+                            <input type="radio" name="score_equipment" value="500000">50w以下</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="score_equipment" value="800000">80w以下</label>
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>宝石评分</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="score_diamond" value="0" checked>不限</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="score_diamond" value="725">725以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="score_diamond" value="960">960以上</label>    
+                        <label class="radio-inline">
+                            <input type="radio" name="score_diamond" value="1280">1280以上</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="score_diamond" value="1920">1920以上</label> 
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>血量</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="0" checked>不限</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="100000">10w以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="300000">30w以上</label>    
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="500000">50w以上</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="800000">80w以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="1000000">100w以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="blood" value="1200000">120w以上</label> 
+                    </div>
+                    <div class="condition">
+                        <label class="radio-inline"><b>武意等级</b></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="0" checked>不限</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="30">30以上</label>    
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="50">50以上</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="80">80以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="100">100以上</label> 
+                        <label class="radio-inline">
+                            <input type="radio" name="wuyi_level" value="120">120以上</label> 
+                    </div>
+                    <p id="submit">
+                    <button id="check" type="submit" class="btn btn-primary btn-lg btn-block">查&ensp;询</button></p>
+                </form>
+                <a href="http://tl.cyg.changyou.com" target="_blank" style="padding-left: 20px;">天龙八部畅易阁官方网站</a>        
+                <span class="pull-right">抢号程序打包出售，加qq:<b>1103045615</b></span>
+            </div>    
+            </div>  
+            <div class="row" id="data">
+            <div class="col-lg-12 col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                <div id="attention">
+                    <div><span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;建议您<b>使用电脑浏览器</b>或者<b>将手机横屏查看</b></div>
+                    <div><span class="glyphicon glyphicon-star"></span>&nbsp;表格中红色背景表示商品含重楼，价格、评分、血量等属性可<b>点击表头进行排序</b>，公示区信息已上线</div>
+                    <div><span class="glyphicon glyphicon-envelope"></span>&nbsp;若对本站有建议或合作需求，请联系我：<a href="mailto:jiangfanloveen@outlook.com">Email</a></div>                 
+                    <div><span class="glyphicon glyphicon-heart"></span>&nbsp;如果您觉得这个网站不错的话，点击上方广告就是最好的支持，谢谢！</div>
+                </div>
+                <table data-toggle="table" id="table">
+                </table>
+            </div>
+
+        </div>
+    </div>
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                    <div>
+                        <span>Powered by Bootstrap v3.3.7</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span>&nbsp; Author -- 阿茶</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-bell-o" aria-hidden="true"></i>
+                        <span>抢号程序打包出售，需要的加qq：<b>1103045615</b></span>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                    <div class="pull-right">
+                    <div>
+                    <a href="http://tombraiderjf.com" target="_blank" class="return-top" id="home"><i class="fa fa-home"></i></a></div>
+                    <div style="margin-top:8px;">
+                    <a href="#" class="return-top" id="back2top"><i class="fa fa-arrow-up"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+    </body>
+</html>

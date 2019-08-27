@@ -65,6 +65,23 @@ $(document).ready(function(){
             sortable: true
         },
         {
+            field: "clothes",
+            title: "时装",
+            formatter: function(value, row, index){
+                if (value == '0'){
+                    return "无";
+                }
+                else{
+                    res = "";
+                    for(var i=0; i<value.length; i++)
+                    {
+                        res += ("<img src='image/时装/" + clothes_dict[value[i]] + ".jpg' width=19px style='padding-right: 1px;' title='" + clothes_dict[value[i]] + "'>");
+                    }
+                    return res;
+                }
+            }
+        },
+        {
             field: "ride",
             title: "坐骑",
             formatter: function(value, row, index){
@@ -81,6 +98,7 @@ $(document).ready(function(){
                 }
             }
         },
+        
         {
             field: "id",
             title: "链接",
@@ -133,6 +151,7 @@ $(document).ready(function(){
         var score_diamond = $('input:radio[name="score_diamond"]:checked').val();
         var blood = $('input:radio[name="blood"]:checked').val();
         var wuyi_level = $('input:radio[name="wuyi_level"]:checked').val();
+        var clothes = $('input:radio[name="clothes"]:checked').val();
         var ride = $('input:radio[name="ride"]:checked').val();
         var condition = $('input:radio[name="condition"]:checked').val();
         var postData = {
@@ -145,6 +164,7 @@ $(document).ready(function(){
             "score_diamond": score_diamond,
             "blood": blood,
             "wuyi_level": wuyi_level,
+            "clothes": clothes,
             "ride": ride,
             "condition": condition
         };
@@ -152,7 +172,7 @@ $(document).ready(function(){
         console.log(postData);
         
         $.ajax({
-            url:'http://47.102.140.114/TL_changyige/welcome_v2.php',//目的php文件
+            url:'http://47.102.140.114/TL_changyige/getData.php',//目的php文件
             data: postData,//传输的数据
             type:'post',//数据传送的方式post
             dataType:'json',//数据传输的格式是json

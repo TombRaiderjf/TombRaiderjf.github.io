@@ -196,9 +196,9 @@ cursor.close()
 db.close()
 
 
-newIds, newCl = updateId()
-for key in newIds:
-    addData(key, newCl[key])
+# newIds, newCl = updateId()
+# for key in newIds:
+#     addData(key, newCl[key])
 
 
 # create table goods_v2 (id bigint primary key,
