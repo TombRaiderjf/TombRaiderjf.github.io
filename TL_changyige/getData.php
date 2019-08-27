@@ -154,6 +154,7 @@ if ($result->num_rows > 0) {
             'max_attribute'=>$row["max_attribute"],
             'blood'=>$row["blood"],
             'wuyi_level'=>$row["wuyi_level"],
+            'clothes'=>$row["clothes"],
             'ride'=>$row["ride"]
         ); 
         if ($rank == "0")
