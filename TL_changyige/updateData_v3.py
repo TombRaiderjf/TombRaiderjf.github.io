@@ -173,8 +173,12 @@ while(True):
     forsale = 0
     t1 = datetime.now()
     print("------------------------")
-    print("start update url")
-    newIds= updateId(forsale)
+    print("start update selling url")
+    newIds = updateId(forsale)
+    updateData(newIds, forsale)
+    print("start update public url")
+    forsale = 1
+    newIds = updateId(forsale)
     updateData(newIds, forsale)
     t2 = datetime.now()
     print("one loop time=", (t2-t1).seconds)
