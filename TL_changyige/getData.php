@@ -29,11 +29,12 @@ if($connect->connect_error)
     die("连接失败：". $connect->connect_error);
 }
 
+$sql = "SELECT * FROM goods";
 if ($condition == "0"){
-    $sql = "SELECT * FROM goods";
+    $sql = $sql." where sale=0";
 }
 else{
-    $sql = "SELECT * FROM sale";
+    $sql = $sql." where sale=1";
 }
 
 $temp = 0;
