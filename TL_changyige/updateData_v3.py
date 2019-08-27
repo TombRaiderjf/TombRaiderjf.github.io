@@ -124,7 +124,7 @@ def addData(id, sale):
         
 
 def deleteUnexist(dic, sale):
-    sql = "select id from goods where sale="+sale
+    sql = "select id from goods where sale=" + str(sale)
     number = cursor.execute(sql)
     data = cursor.fetchmany(number)
     total = 0
