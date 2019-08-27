@@ -119,7 +119,7 @@ def addData(id):
             ride = "0"
         if clothes == "":
             clothes = "0"
-        print(id, sex, sale, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
+        print(id, sex, 0, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
         write_data(id, sex, 0, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
         
 
