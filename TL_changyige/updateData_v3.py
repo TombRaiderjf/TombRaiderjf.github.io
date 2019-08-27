@@ -29,11 +29,11 @@ menpai_dict = {"少林": 0, "明教": 1, "丐帮": 2, "武当": 3, "峨嵋": 4, 
 sex_dict = {"女": 0, "男": 1}
 
 
-def updateId():
+def updateId(sale):
     ids = {}
     cl = {}
     for j in range(1, 2):
-        updateUrl(raw_url + str(j), ids)
+        updateUrl(raw_url[sale] + str(j), ids)
     print("total data ", len(ids))
     return ids
 
@@ -78,7 +78,7 @@ def deleteData(id):
         db.rollback()
 
 
-def addData(id):
+def addData(id, sale):
     url = baseUrl + id
     # print(url)
     header = {
@@ -119,8 +119,8 @@ def addData(id):
             ride = "0"
         if clothes == "":
             clothes = "0"
-        print(id, sex, 0, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
-        write_data(id, sex, 0, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
+        print(id, sale, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
+        write_data(id, sale, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
         
 
 def deleteUnexist(dic):
@@ -135,7 +135,7 @@ def deleteUnexist(dic):
     print("delete unexist ", total)
 
 
-def updateData(dic, cl):
+def updateData(dic, sale):
     deleteUnexist(dic)
     for key in dic:
         search = "select id price from goods where id=" + key
@@ -143,7 +143,7 @@ def updateData(dic, cl):
             cursor.execute(search)  
             data = cursor.fetchone() 
             if data is None:
-                addData(key, cl[key])               
+                addData(key, sale)               
             elif dic[key] != data['price']:
                 change = "update goods set price=" + dic[key] + " where id=" + key
                 cursor.execute(change)
@@ -153,8 +153,7 @@ def updateData(dic, cl):
             db.rollback()
 
 
-
-def write_data(id, sex, sale, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride):
+def write_data(id, sale, sex,chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride):
     # sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, 'a', "NULL")
     try:       
         cursor.execute("insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, sex, sale, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride))       
@@ -166,7 +165,7 @@ def write_data(id, sex, sale, chonglou, price, menpai, rank_pure, score_equipmen
 
 
 baseUrl = "http://tl.cyg.changyou.com/goods/char_detail?serial_num="
-raw_url = "http://tl.cyg.changyou.com/goods/selling?world_id=0&have_chosen=&page_num="
+raw_url = ["http://tl.cyg.changyou.com/goods/selling?world_id=0&have_chosen=&page_num=", "http://tl.cyg.changyou.com/goods/public?world_id=0&order_by=equip_point-desc&have_chosen=&page_num="]
 db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
 cursor = db.cursor()
 agentHeaders = LoadUserAgents("user_agents.txt")
@@ -174,7 +173,7 @@ agentHeaders = LoadUserAgents("user_agents.txt")
 #     t1 = datetime.now()
 #     print("------------------------")
 #     print("start update url")
-#     newIds, newCl = updateId()
+#     newIds= updateId()
 #     updateData(newIds, newCl)
 #     t2 = datetime.now()
 #     print("one loop time=", (t2-t1).seconds)
@@ -198,7 +197,7 @@ db.close()
 # score_diamond int not null,
 # blood int not null,
 # max_attack int not null,
-# max_attribute tinyint not null,
+# max_attribute int not null,
 # wuyi_level int not null,
 # clothes varchar(10),
 # ride varchar(10));
