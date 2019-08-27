@@ -102,8 +102,8 @@ def addData(id, sale):
         blood = str(dict_data['maxHp'])
         price = newIds[id]
         attack_arr = [dict_data["coldAtt"], dict_data["fireAtt"], dict_data["lightAtt"], dict_data["postionAtt"] ]     
-        max_attribute = max(attack_arr)
-        max_attack = str(attack_arr.index(max_attribute))
+        max_attack = max(attack_arr)
+        max_attribute = str(attack_arr.index(max_attack))
         ride = ""
         clothes = ""
         for item in dict_data['items']['equip']:
