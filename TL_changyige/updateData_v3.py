@@ -157,7 +157,7 @@ def updateData(dic, cl):
 def write_data(id, sex, sale, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride):
     # sql = "insert into goods_v2 value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, 'a', "NULL")
     try:       
-        cursor.execute("insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, sex, sale, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes , ride))       
+        cursor.execute("insert into goods value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, sex, sale, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride))       
         db.commit()
         print("add new ", id)
     except:
@@ -178,14 +178,14 @@ agentHeaders = LoadUserAgents("user_agents.txt")
 #     updateData(newIds, newCl)
 #     t2 = datetime.now()
 #     print("one loop time=", (t2-t1).seconds)
-#cursor.close()
-#db.close()
+
 
 
 newIds = updateId()
 for key in newIds:
     addData(key)
-
+cursor.close()
+db.close()
 
 # create table goods (id bigint primary key,
 # sale tinyint not null,
