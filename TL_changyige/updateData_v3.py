@@ -123,8 +123,8 @@ def addData(id, sale):
         write_data(id, sale, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
         
 
-def deleteUnexist(dic):
-    sql = "select id from goods"
+def deleteUnexist(dic, sale):
+    sql = "select id from goods where sale="+sale
     number = cursor.execute(sql)
     data = cursor.fetchmany(number)
     total = 0
@@ -136,7 +136,7 @@ def deleteUnexist(dic):
 
 
 def updateData(dic, sale):
-    deleteUnexist(dic)
+    deleteUnexist(dic, sale)
     for key in dic:
         search = "select id price from goods where id=" + key
         try:       
