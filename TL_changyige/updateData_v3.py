@@ -17,14 +17,14 @@ import re
 # clothes_dict = {"龙凤呈祥": "a", "龙凤遥相倚": "b", "仙侣情缘": "c", "墨羽潜幽": "d", "锦衣醉画": "e", "枭龙霸铠": "f", "虎啸雄装": "g",
 # "炎狼尊袍": "h", "鲤戏澜芳": "i", "银霏染月": "j"}
 
-clothes_dict = {10124637: "a", 10125199: "b", 10125028: "c", 10124607: "d", 10125133: "d", 10125055: "e", 10124405: "f", 10124404: "g",
+clothes_dict = {10124637: "a", 10125199: "b", 10125028: "c", 10124724: "c", 10124607: "d", 10125133: "d", 10125055: "e", 10124405: "f", 10124404: "g",
 10124403: "h", 10124542: "i", 10125108: "j"}
 
 ride_dict = {"沧澜羽翼": "a", "金羽": "b", "梦灵仙驹": "c", "青翼战龙": "d", "添福锦鳞": "e", "水碧飞鸢": "f", "绒雪神牛": "g", "黑天马": "h", "紫电": "i", \
     "月白龙马": "j", "四喜送鲤台": "k", "绝云焱龙": "l", "熔岩魔犀": "m", "绛紫飞鸢": "n", "梦幻仙驹": "o", "霸世羽龙": "p"}
 
 
-menpai_dict = {"少林": 0, "明教": 1, "丐帮": 2, "武当": 3, "峨嵋": 4, "星宿": 5 ,"天龙": 6, "天山": 7, "逍遥": 8, "慕容": 9, "唐门":10, "鬼谷": 11}
+menpai_dict = {"少林": 0, "明教": 1, "丐帮": 2, "武当": 3, "峨嵋": 4, "星宿": 5 ,"天龙": 6, "天山": 7, "逍遥": 8, "慕容": 10, "唐门":11, "鬼谷": 12}
 
 sex_dict = {"女": 0, "男": 1}
 
@@ -32,7 +32,7 @@ sex_dict = {"女": 0, "男": 1}
 def updateId(sale):
     ids = {}
     cl = {}
-    for j in range(1, 2):
+    for j in range(1, 10):
         updateUrl(raw_url[sale] + str(j), ids)
     print("total data ", len(ids))
     return ids
@@ -109,11 +109,11 @@ def addData(id, sale):
         for item in dict_data['items']['equip']:
             if dict_data['items']['equip'][item]['typeDesc'] == "时装":
                 for key in clothes_dict:
-                    if key == dict_data['items']['equip'][item]['dataId']:
+                    if clothes.find(clothes_dict[key])==-1 and key == dict_data['items']['equip'][item]['dataId']:
                         clothes += clothes_dict[key]
             if dict_data['items']['equip'][item]['typeDesc'] == "坐骑":
                 for key in ride_dict:
-                    if dict_data['items']['equip'][item]['name'].find(key) != -1:
+                    if ride.find(ride_dict[key])==-1 and dict_data['items']['equip'][item]['name'].find(key) != -1:
                         ride += ride_dict[key]
         if ride == "":
             ride = "0"

@@ -37,15 +37,9 @@ else{
     $sql = $sql." where sale=1";
 }
 
-$temp = 0;
 
 if ($ride != "-1"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     if ($ride == "1"){
         $sql = $sql."ride<>'0'";
     }
@@ -56,12 +50,7 @@ if ($ride != "-1"){
 
 
 if ($clothes != "-1"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     if ($clothes == "1"){
         $sql = $sql."clothes<>'0'";
     }
@@ -71,68 +60,40 @@ if ($clothes != "-1"){
 }
 
 if ($score_diamond != "0"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."score_diamond>=".$score_diamond;
 }
+
 if ($score_equipment != "10000000"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."score_equipment<=".$score_equipment;
 }
+
 if ($price != "1000000"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."price<=".$price;
 }
+
 if ($blood != "0"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."blood>=".$blood;
 }
+
 if ($wuyi_level != "0"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."wuyi_level>=".$wuyi_level;
 }
+
 if ($sex != "-1"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."sex=".$sex;
 }
+
 if ($chonglou != "-1"){
-    if ($temp == 0){
-        $sql = $sql." where ";
-        $temp = 1;
-    }
-    else
-        $sql = $sql." and ";
+    $sql = $sql." and ";
     $sql = $sql."chonglou=".$chonglou;
 }
+
 $result = $connect->query($sql);
 
 
