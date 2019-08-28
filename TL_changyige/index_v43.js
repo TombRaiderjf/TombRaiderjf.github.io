@@ -180,7 +180,8 @@ $(document).ready(function(){
             //数据给后端php文件并成功返回
                 console.log(response);//打印返回的值
                 //处理服务器回传的数据
-
+                if (response == "-1")
+                    response = {}
                 //bootstrap-table 方法更新表格数据
                 $('#table').bootstrapTable('destroy');
                 $("#table").bootstrapTable({ //表格初始化

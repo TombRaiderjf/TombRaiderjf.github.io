@@ -149,7 +149,7 @@ if ($result->num_rows > 0) {
     die(json_encode($res));
 }
 else {
-    echo array();
+    echo "-1";
 }
 $connect->close();
 
