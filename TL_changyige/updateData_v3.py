@@ -121,7 +121,8 @@ def addData(id, sale):
             clothes = "0"
         print(id, sale, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
         write_data(id, sale, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride)
-        
+        time.sleep(1)
+
 
 def deleteUnexist(dic, sale):
     sql = "select id from goods where sale=" + str(sale)
