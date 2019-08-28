@@ -33,7 +33,9 @@ def updateId(sale):
     ids = {}
     cl = {}
     for j in range(1, 1000):
-        updateUrl(raw_url[sale] + str(j), ids)
+        flag = updateUrl(raw_url[sale] + str(j), ids)
+        if flag == False:
+            break
     print("total data ", len(ids))
     return ids
 
@@ -49,6 +51,8 @@ def updateUrl(url, dic):
         time.sleep(1)
     soup = BeautifulSoup(html.content, "html.parser")
     goods = soup.find_all('li', class_='role-item')
+    if goods is None:
+        return False
     for item in goods:
         url_this = item.find('a', class_='r-img').get('href')
         id = url_this.split("=")[1] 
@@ -56,6 +60,7 @@ def updateUrl(url, dic):
         if int(price) >= 500:
             dic[id] = price
     time.sleep(1)
+    return True
 
 
 # load the user-agent file into a list
