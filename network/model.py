@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+#from flask_cors import CORS
 import json
 import numpy as np
 import random
@@ -15,6 +15,7 @@ import string
 from PIL import Image
 import base64
 import io
+import datetime
 
 # app = Flask(__name__)
 
@@ -74,7 +75,7 @@ loss_out = Lambda(ctc_lambda_func, output_shape=(1,), name='ctc')([x, labels, in
 
 model = Model(inputs=[input_tensor, labels, input_length, label_length], outputs=loss_out)
 graph = tf.get_default_graph()
-model.load_weights('ctc_best_new77.h5')
+#model.load_weights('ctc_best_new77.h5')
 
 # @app.route('/')
 # def hello_world():
@@ -96,3 +97,8 @@ with open("Q.jpg",'rb') as f:
 
 res = identify_captcha(base64_data)
 print(res)
+t1 = datetime.datetime.now()
+for i in range(50):
+    res = identify_captcha(base64_data)
+t2 = datetime.datetime.now()
+print((t2-t1).second)
