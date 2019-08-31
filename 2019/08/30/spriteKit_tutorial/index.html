@@ -143,7 +143,7 @@
 <meta property="og:site_name" content="阿茶的Blog">
 <meta property="og:description" content="本文翻译自 15 tips to optimize your SpriteKit game  SpriteKitSpriteKit是一个简单快速的二维游戏框架，由苹果自己的媒体库支持，可以直接访问GPU。 但是随着游戏的编写，可能会发现帧率开始下降，而且对于iPad Pro这样拥有120Hz刷新率显示屏的设备，需要努力将每一帧更新时间控制在8毫秒之内。 如果遇到帧率低、动画不稳定或类似的性能问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-30T15:57:13.402Z">
+<meta property="og:updated_time" content="2019-08-31T15:31:59.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="优化SpriteKit游戏性能的15条建议">
 <meta name="twitter:description" content="本文翻译自 15 tips to optimize your SpriteKit game  SpriteKitSpriteKit是一个简单快速的二维游戏框架，由苹果自己的媒体库支持，可以直接访问GPU。 但是随着游戏的编写，可能会发现帧率开始下降，而且对于iPad Pro这样拥有120Hz刷新率显示屏的设备，需要努力将每一帧更新时间控制在8毫秒之内。 如果遇到帧率低、动画不稳定或类似的性能问题">
@@ -479,12 +479,24 @@
                 
               
 
-              <time title="创建时间：2019-08-30 20:10:10 / 修改时间：23:57:13" itemprop="dateCreated datePublished" datetime="2019-08-30T20:10:10+08:00">2019-08-30</time>
+              <time title="创建时间：2019-08-30 20:10:10" itemprop="dateCreated datePublished" datetime="2019-08-30T20:10:10+08:00">2019-08-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-31 23:31:59" itemprop="dateModified" datetime="2019-08-31T23:31:59+08:00">2019-08-31</time>
               
             
           </span>
@@ -562,40 +574,40 @@
 <h1 id="SpriteKit"><a href="#SpriteKit" class="headerlink" title="SpriteKit"></a>SpriteKit</h1><p>SpriteKit是一个简单快速的二维游戏框架，由苹果自己的媒体库支持，可以直接访问GPU。</p>
 <p>但是随着游戏的编写，可能会发现帧率开始下降，而且对于iPad Pro这样拥有120Hz刷新率显示屏的设备，需要努力将每一帧更新时间控制在8毫秒之内。</p>
 <p>如果遇到帧率低、动画不稳定或类似的性能问题，可以通过一下15个优化方法来识别和解决问题，而且有少量代码示意。</p>
-<h1 id="1-使用纹理图集时要谨慎"><a href="#1-使用纹理图集时要谨慎" class="headerlink" title="1.使用纹理图集时要谨慎"></a>1.使用纹理图集时要谨慎</h1><p>纹理地图集将多个单独的资源放置在同一个完成的图形中，以便它们都能同时加载。然后，通过有效地一次只渲染资源的一部分来进行绘制，这允许spritekit保持一个纹理处于活动状态，并且只移动从中绘制的窗口。</p>
+<h1 id="使用纹理图集时要谨慎"><a href="#使用纹理图集时要谨慎" class="headerlink" title="使用纹理图集时要谨慎"></a>使用纹理图集时要谨慎</h1><p>纹理地图集将多个单独的资源放置在同一个完成的图形中，以便它们都能同时加载。然后，通过有效地一次只渲染资源的一部分来进行绘制，这允许spritekit保持一个纹理处于活动状态，并且只移动从中绘制的窗口。</p>
 <p>这对性能有很大的提升，因为更改状态（在渲染过程中卸载一个纹理并加载另一个纹理）的开销很大。然而，开发者通常会将所有的图像添加到一个单独的图集中，这实际上是起了相反的作用，因为Xcode根据自己的拟合算法将资源构建到图集中，并且由于它不知道资源实际使用的位置，所以你可能会发现完全不相关的精灵出现在同样的图集中。</p>
 <p>比如，游戏里有一个2级的精灵，另一个8级的精灵，和一个52级的精灵，它们都在同一个纹理图集中。这意味着Xcode必须将两个不相关的sprite加载到内存中，以便访问它实际需要绘制的sprite，这是非常低效的。</p>
 <p>因此，应该创建多个纹理图集以适合实际内容：例如，一个图集中一个播放器的所有动画，以及另一个图集中特定世界的所有精灵。</p>
-<h1 id="2-根据需要预加载纹理"><a href="#2-根据需要预加载纹理" class="headerlink" title="2.根据需要预加载纹理"></a>2.根据需要预加载纹理</h1><p>当我说从你的应用包中加载纹理会带来性能成本时，你应该不会感到惊讶。如果图像很小，它可能会很小，但是如果你尝试加载一张全屏的背景图片，加载时间足以超出你的预算——这就会导致掉帧。</p>
+<h1 id="根据需要预加载纹理"><a href="#根据需要预加载纹理" class="headerlink" title="根据需要预加载纹理"></a>根据需要预加载纹理</h1><p>当我说从你的应用包中加载纹理会带来性能成本时，你应该不会感到惊讶。如果图像很小，它可能会很小，但是如果你尝试加载一张全屏的背景图片，加载时间足以超出你的预算——这就会导致掉帧。</p>
 <p>要解决这个问题，应该在背景中预加载纹理，有效地预热缓存，以便在需要时立即使用，这样一来，掉帧的可能性会降低。</p>
 <p>要了解这是如何工作的，重要的是要了解SKtexture的工作方式与UIImage类似：数据在需要使用的时候才真正地被载入。因此，即使对于非常大的图像，这种代码也几乎是瞬时的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let texture = SKTexture(imageNamed: &quot;Thrash&quot;)</span><br></pre></td></tr></table></figure>
 <p>但是，一旦你在你的游戏场景中把这个纹理分配给一个sprite节点，它就需要被加载才能被绘制出来。理想情况下，我们希望在场景显示之前（可能是在加载屏幕时）进行加载，这样可以避免帧问题，因此应该这样预加载：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">texture.preload &#123;</span><br><span class="line">    print(&quot;The texture is ready!&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="3-物体的方向"><a href="#3-物体的方向" class="headerlink" title="3.物体的方向"></a>3.物体的方向</h1><p>当你制作简单的SpriteKit游戏时，用任何更容易理解的方式制作艺术品都是有意义的。</p>
+<h1 id="物体的方向"><a href="#物体的方向" class="headerlink" title="物体的方向"></a>物体的方向</h1><p>当你制作简单的SpriteKit游戏时，用任何更容易理解的方式制作艺术品都是有意义的。</p>
 <p>实际上，这通常意味着让玩家的宇宙飞船默认指向上，因为很多人认为它的方向应该如此。然而，SpriteKit却有不同的想法：对于SpriteKit来说，90度（3点钟）是物体的默认方向，所以为了让二者匹配，你会发现自己经常在计算中添加 CGFloat.pi/2 弧度。</p>
 <p>当性能变得更加关键时，就需要重新考虑了。我们可能认为垂直向上是对象的默认方向，但SpriteKit不这样认为，并且它不断地添加额外的算法来在两个对象之间转换，增加不必要的开销。</p>
 <p>所以：确保你的资源朝向正确的方向，并且对于你的游戏场景来说是一个合理的大小。</p>
-<h1 id="4-更换，不要混合"><a href="#4-更换，不要混合" class="headerlink" title="4.更换，不要混合"></a>4.更换，不要混合</h1><p>尽管需要进行所有计算，但在屏幕上绘制像素（渲染成品）仍然是制作游戏最慢的部分之一。这是因为它很复杂：大多数精灵都有不规则的形状和透明度，我们通常在场景中建立有多个图层，而且加入了让物体活灵活现的复杂效果。</p>
+<h1 id="更换，不要混合"><a href="#更换，不要混合" class="headerlink" title="更换，不要混合"></a>更换，不要混合</h1><p>尽管需要进行所有计算，但在屏幕上绘制像素（渲染成品）仍然是制作游戏最慢的部分之一。这是因为它很复杂：大多数精灵都有不规则的形状和透明度，我们通常在场景中建立有多个图层，而且加入了让物体活灵活现的复杂效果。</p>
 <p>很多这是不可避免的，但你可以做一个简单的改变：如果你画的精灵根本没有透明度（即，它是一个实体形状，如背景图像），那么你可以告诉SpriteKit在渲染它的时候不进行alpha混合，如下所示：</p>
 <p>yourSprite.blendMode = .replace</p>
 <p>在实践中，这意味着简单地通过将精灵的像素复制到已经存在的任何内容上来进行绘制——SpriteKit不需要读取现有的颜色值，然后将其与新的颜色值混合。</p>
-<h1 id="5-删除玩家看不到的节点"><a href="#5-删除玩家看不到的节点" class="headerlink" title="5.删除玩家看不到的节点"></a>5.删除玩家看不到的节点</h1><p>SpriteKit可以很好地自动剔除我们的游戏场景，这样屏幕外的东西就不会被绘制出来。但是它们仍然被纳入物理计算中，即使不绘制某些东西，SpriteKit仍然不断检查某些东西是否可见。</p>
+<h1 id="删除玩家看不到的节点"><a href="#删除玩家看不到的节点" class="headerlink" title="删除玩家看不到的节点"></a>删除玩家看不到的节点</h1><p>SpriteKit可以很好地自动剔除我们的游戏场景，这样屏幕外的东西就不会被绘制出来。但是它们仍然被纳入物理计算中，即使不绘制某些东西，SpriteKit仍然不断检查某些东西是否可见。</p>
 <p>因此，如果某些内容真正从屏幕上移开且近期不需要用到，最好在它上面调用removeFromParent()。如果需要，可以稍后再将它添加回来，但与此同时，这会为SpriteKit节省一些不需要的额外计算。</p>
-<h1 id="6-限制使用裁剪和效果节点"><a href="#6-限制使用裁剪和效果节点" class="headerlink" title="6.限制使用裁剪和效果节点"></a>6.限制使用裁剪和效果节点</h1><p>这两种节点类型都允许我们自定义绘制其他节点的方式，方法是剪切其绘图或应用Core Image过滤器。但是，两者都使用屏幕外渲染缓冲区：节点的内容需要渲染到私有帧缓冲区，然后复制回主场景。这个额外的传递速度很慢，因此应谨慎使用这两种类型。</p>
+<h1 id="限制使用裁剪和效果节点"><a href="#限制使用裁剪和效果节点" class="headerlink" title="限制使用裁剪和效果节点"></a>限制使用裁剪和效果节点</h1><p>这两种节点类型都允许我们自定义绘制其他节点的方式，方法是剪切其绘图或应用Core Image过滤器。但是，两者都使用屏幕外渲染缓冲区：节点的内容需要渲染到私有帧缓冲区，然后复制回主场景。这个额外的传递速度很慢，因此应谨慎使用这两种类型。</p>
 <p>虽然没有办法降低裁剪节点的成本（除了尽可能避免它们！），可以通过指示SpriteKit缓存生成的帧缓冲来降低效果节点的成本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">effectNode.shouldRasterize = true</span><br></pre></td></tr></table></figure>
 <p>注意：如果效果节点不断变化，那么栅格化效果节点是一个坏主意，因为你经常将额外的数据存储在RAM中，然后扔掉它。另一方面，如果效果节点每隔几秒或更短时间仅更改一次，则栅格化是个好主意。</p>
-<h1 id="7-粒子系统的坑"><a href="#7-粒子系统的坑" class="headerlink" title="7.粒子系统的坑"></a>7.粒子系统的坑</h1><p>粒子系统具有相对便宜，简单和令人印象深刻的效果，但它也很容易得意忘形——特别是因为你可以在Xcode的内置编辑器中点击一小时，而不会感觉到实际的性能影响。</p>
+<h1 id="粒子系统的坑"><a href="#粒子系统的坑" class="headerlink" title="粒子系统的坑"></a>粒子系统的坑</h1><p>粒子系统具有相对便宜，简单和令人印象深刻的效果，但它也很容易得意忘形——特别是因为你可以在Xcode的内置编辑器中点击一小时，而不会感觉到实际的性能影响。</p>
 <p>问题是Xcode的粒子编辑器不能模拟现实世界的游戏环境——你的特殊功能可能在测试工具中很有用，但是当它们呈现出来时可能会降低你的帧率。</p>
 <p>一个特殊的罪魁祸首是出生率，表示SpriteKit创造粒子的速度。如果你把它设置到500以上，可能看上去很棒，但它的计算成本很高——尝试使用一半的值并使用更多的粒子，因此单个粒子会占用更多空间。</p>
-<h1 id="8-禁用兄弟绘图顺序"><a href="#8-禁用兄弟绘图顺序" class="headerlink" title="8.禁用兄弟绘图顺序"></a>8.禁用兄弟绘图顺序</h1><p>SKView有一个名为ignoresSiblingOrder的布尔属性，当它设置为false时，会对性能产生严重影响。</p>
+<h1 id="禁用兄弟绘图顺序"><a href="#禁用兄弟绘图顺序" class="headerlink" title="禁用兄弟绘图顺序"></a>禁用兄弟绘图顺序</h1><p>SKView有一个名为ignoresSiblingOrder的布尔属性，当它设置为false时，会对性能产生严重影响。</p>
 <p>同级绘图顺序是指SpriteKit在游戏场景中渲染节点的方式。当考虑到它时，SpriteKit根据它们的Z位置和它们作为其父节点的子节点的位置来渲染节点。</p>
 <p>这很慢并且通常是不必要的，因为我们可以使用Z位置来控制绘制深度并消除额外的排序。</p>
 <p>令人讨厌的是，默认情况下，ignoresSiblingOrder设置为false，这意味着您将获得缓慢的绘制行为。如果可以，可以通过将其添加到内部渲染场景的任何视图控制器中将其设置为true：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yourSKView.ignoresSiblingOrder = true</span><br></pre></td></tr></table></figure>
 <p>现在确保使用节点的zPosition属性来控制它们的绘制位置。</p>
-<h1 id="9-使用GPU的着色器"><a href="#9-使用GPU的着色器" class="headerlink" title="9.使用GPU的着色器"></a>9.使用GPU的着色器</h1><p>虽然您可以使用纹理，裁剪和效果节点创建一些有趣的效果，但使用片段着色器可以做得更多，而且它们也更快。</p>
+<h1 id="使用GPU的着色器"><a href="#使用GPU的着色器" class="headerlink" title="使用GPU的着色器"></a>使用GPU的着色器</h1><p>虽然您可以使用纹理，裁剪和效果节点创建一些有趣的效果，但使用片段着色器可以做得更多，而且它们也更快。</p>
 <p>片段着色器是用称为GLSL的专用语言编写的小程序，它们在节点内的每个像素上运行。它们可以让您创建令人难以置信的效果，如水波纹，静电噪声，压花，隔行扫描等等，而现代计算机的设计在处理它们时效率极高——现代GPU可能拥有同时运行的2000-4000个专用着色器处理器。</p>
 <p>如果你想使用着色器获得一个高级效果库，所有这些都由作者编写并使用SpriteKit进行测试，GitHub仓库<a href="https://github.com/twostraws/ShaderKit" target="_blank" rel="noopener">ShadeKit</a>：ShaderKit有26个不同的着色器可供试用，每个着色器都有全面记录，所以你可以修改或自己创建。</p>
 <p>但是，为了获得额外的性能，还有需要做三件事：</p>
@@ -604,7 +616,7 @@
 <li>将同一着色器分配给多个不同的节点，这样做比创建单个着色器快得多。</li>
 <li>尽量不要经常调整你的制服和属性，因为它可能导致SpriteKit重新编译着色器代码。</li>
 </ol>
-<h1 id="10-明智地选择你的物理身体"><a href="#10-明智地选择你的物理身体" class="headerlink" title="10.明智地选择你的物理身体"></a>10.明智地选择你的物理身体</h1><p>SpriteKit为我们提供了一系列物理实体，可用于表示我们在空间中的节点：圆形，矩形，复合形状，甚至是像素级完美的碰撞检测。每个都有它们的用途，但从广义上讲，你将选择三个中的一个：</p>
+<h1 id="明智地选择你的物理身体"><a href="#明智地选择你的物理身体" class="headerlink" title="明智地选择你的物理身体"></a>明智地选择你的物理身体</h1><p>SpriteKit为我们提供了一系列物理实体，可用于表示我们在空间中的节点：圆形，矩形，复合形状，甚至是像素级完美的碰撞检测。每个都有它们的用途，但从广义上讲，你将选择三个中的一个：</p>
 <ol>
 <li>像素完美的碰撞检测是最精确的，但也是最昂贵的。这应该谨慎使用，比如为玩家准备。</li>
 <li>大多数时候，矩形碰撞检测快速且接近，因此它是一个合理的默认选择。</li>
@@ -613,9 +625,9 @@
 <p>你可能会发现init(body :)初始化程序有助于克服特别麻烦的物理过程。可以从其他几个物理实体构建一个复合体，比如将三个圆和一个矩形连接在一起。</p>
 <p>无论您选择什么，除非您绝对需要，否则不要启用usesPreciseCollisionDetection布尔值。默认情况下，SpriteKit每帧都会对物理进行评估以查看是否发生碰撞，但如果您有快速移动的小物体，则可能会错过碰撞，因为两帧之间发生了太多的移动。</p>
 <p>在这种情况下，启用usesPreciseCollisionDetection是合理的，因为它使用了迭代检测算法——而不是将球从100直接移动到150，它会检查帧之间的移动来确定是否发生了碰撞。由于这个过程非常慢，因此仅在特别需要时才使用它。</p>
-<h1 id="11-尽可能使用静态物理"><a href="#11-尽可能使用静态物理" class="headerlink" title="11.尽可能使用静态物理"></a>11.尽可能使用静态物理</h1><p>必须每帧评估具有物理实体的对象，来查看它们如何移动以及它们是否产生碰撞。如果将物理主体的isDynamic属性设置为false，则会减少SpriteKit执行的计算次数，它将不再响应应用于它的重力，摩擦力，力或脉冲，并且当另一个对象发生碰撞时它不会被移动。</p>
+<h1 id="尽可能使用静态物理体"><a href="#尽可能使用静态物理体" class="headerlink" title="尽可能使用静态物理体"></a>尽可能使用静态物理体</h1><p>必须每帧评估具有物理实体的对象，来查看它们如何移动以及它们是否产生碰撞。如果将物理主体的isDynamic属性设置为false，则会减少SpriteKit执行的计算次数，它将不再响应应用于它的重力，摩擦力，力或脉冲，并且当另一个对象发生碰撞时它不会被移动。</p>
 <p>因此，应该找到那些使用静体而不是动态的地方。静体仍然可以作为其他东西反弹的墙壁，它们本身就不会移动。</p>
-<h1 id="12-仔细选择位掩码"><a href="#12-仔细选择位掩码" class="headerlink" title="12.仔细选择位掩码"></a>12.仔细选择位掩码</h1><p>SpriteKit物理实体有三个位掩码：</p>
+<h1 id="仔细选择位掩码"><a href="#仔细选择位掩码" class="headerlink" title="仔细选择位掩码"></a>仔细选择位掩码</h1><p>SpriteKit物理实体有三个位掩码：</p>
 <ol>
 <li>类别位掩码决定了这是什么类型的对象，我们最多可以定义其中的32个。</li>
 <li>碰撞位掩码决定了这个东西在物理世界中反弹的对象。</li>
@@ -628,14 +640,14 @@
 <li>减少在碰撞位掩码中分配的内容数量，因此SpriteKit必须模拟较少的反弹。</li>
 <li>大大减少接触测试位掩码中分配的内容数量，因此SpriteKit会尽可能不频繁地调用我们的代码。</li>
 </ul>
-<h1 id="13-密切关注节点并绘制计数"><a href="#13-密切关注节点并绘制计数" class="headerlink" title="13.密切关注节点并绘制计数"></a>13.密切关注节点并绘制计数</h1><p>默认情况下，SpriteKit会在右下角显示当前屏幕上有多少个节点，以及每秒有多少帧，在大多数iOS设备上帧率达到60fps，在ProMotion设备上达到120fps。</p>
+<h1 id="密切关注节点并绘制计数"><a href="#密切关注节点并绘制计数" class="headerlink" title="密切关注节点并绘制计数"></a>密切关注节点并绘制计数</h1><p>默认情况下，SpriteKit会在右下角显示当前屏幕上有多少个节点，以及每秒有多少帧，在大多数iOS设备上帧率达到60fps，在ProMotion设备上达到120fps。</p>
 <p>但是，如果遇到性能问题，则可以在此处额外显示另一个有用的诊断值：绘制计数。要启用此功能，需要在视图控制器中将 showsDrawCount = true 添加到SKView配置代码中，然后再次运行游戏。</p>
 <p>“绘制计数”是渲染游戏的一帧所需的绘图传递次数。 SpriteKit不可能同时绘制所有内容，因为有很多图层，有很多效果等等。因此，它会在多个过程中绘制游戏场景。正如我上面所说，裁剪和效果节点需要自己的传递，因为它们的私有帧缓冲区，这意味着它们会产生性能峰值。</p>
 <p>启用绘图过程后，您还可以在应用中进行性能分析的另一个有用值：如果帧率波动很大，并且发现有20个或更多绘图过程，优先考虑看看是否能够降它的值。</p>
 <p>提示：其中一个具有一个精灵的裁剪节点将花费您两次绘制过程。</p>
-<h1 id="14-避免向update-函数中添加逻辑"><a href="#14-避免向update-函数中添加逻辑" class="headerlink" title="14.避免向update()函数中添加逻辑"></a>14.避免向update()函数中添加逻辑</h1><p>update()方法（以及其他帧周期事件，如didEvaluatelActions()和didSimulatePhysics()）在大多数设备上每16ms调用一次，或在ProMotion设备上每8ms调用一次。这是一个非常短的时间，这意味着你需要限制该函数中实现的功能。</p>
+<h1 id="避免向update-函数中添加逻辑"><a href="#避免向update-函数中添加逻辑" class="headerlink" title="避免向update()函数中添加逻辑"></a>避免向update()函数中添加逻辑</h1><p>update()方法（以及其他帧周期事件，如didEvaluatelActions()和didSimulatePhysics()）在大多数设备上每16ms调用一次，或在ProMotion设备上每8ms调用一次。这是一个非常短的时间，这意味着你需要限制该函数中实现的功能。</p>
 <p>那么，您是否可以重新主动检查它们，而不是主动检查事物？例如，不是检查update()中是否所有敌人都被销毁，而是在删除最后一个时保留一组活动敌人并触发功能。这种改变从时间敏感的方法中消除了昂贵的分支操作。</p>
-<h1 id="15-始终在你支持的最老的硬件上测试"><a href="#15-始终在你支持的最老的硬件上测试" class="headerlink" title="15.始终在你支持的最老的硬件上测试"></a>15.始终在你支持的最老的硬件上测试</h1><p>不同的iOS设备以极快的速度运行，因此确保游戏足够快的唯一方法是在iOS部署目标支持的最老，最慢的设备上进行测试。</p>
+<h1 id="始终在你支持的最老的硬件上测试"><a href="#始终在你支持的最老的硬件上测试" class="headerlink" title="始终在你支持的最老的硬件上测试"></a>始终在你支持的最老的硬件上测试</h1><p>不同的iOS设备以极快的速度运行，因此确保游戏足够快的唯一方法是在iOS部署目标支持的最老，最慢的设备上进行测试。</p>
 <p>如果部署到iPad，最旧的设备可能是原装iPad Air或iPad Air 2;在iPhone上它很可能是iPhone 5s或6.无论哪种方式，如果你的游戏在那些旧设备上顺利运行，就没有新问题了！</p>
 <h1 id="额外提示：将周期响应事件分开"><a href="#额外提示：将周期响应事件分开" class="headerlink" title="额外提示：将周期响应事件分开"></a>额外提示：将周期响应事件分开</h1><p>这个对游戏性能没有帮助，但它可以帮助你更好地组织你的游戏代码。通常会看到人们将大量功能转储到他们的SKScene子类中，但实际上没有必要。场景具有委托属性，可以根据需要自动处理帧周期事件。</p>
 <p>要试用它，首先创建一个符合SKSceneDelegate的新类，然后在主视图中创建一个实例并将其分配给delegate属性。现在进入您希望委托处理的任何帧循环事件：</p>
@@ -1132,7 +1144,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpriteKit"><span class="nav-number">1.</span> <span class="nav-text">SpriteKit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-使用纹理图集时要谨慎"><span class="nav-number">2.</span> <span class="nav-text">1.使用纹理图集时要谨慎</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-根据需要预加载纹理"><span class="nav-number">3.</span> <span class="nav-text">2.根据需要预加载纹理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-物体的方向"><span class="nav-number">4.</span> <span class="nav-text">3.物体的方向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-更换，不要混合"><span class="nav-number">5.</span> <span class="nav-text">4.更换，不要混合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-删除玩家看不到的节点"><span class="nav-number">6.</span> <span class="nav-text">5.删除玩家看不到的节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-限制使用裁剪和效果节点"><span class="nav-number">7.</span> <span class="nav-text">6.限制使用裁剪和效果节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-粒子系统的坑"><span class="nav-number">8.</span> <span class="nav-text">7.粒子系统的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-禁用兄弟绘图顺序"><span class="nav-number">9.</span> <span class="nav-text">8.禁用兄弟绘图顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-使用GPU的着色器"><span class="nav-number">10.</span> <span class="nav-text">9.使用GPU的着色器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-明智地选择你的物理身体"><span class="nav-number">11.</span> <span class="nav-text">10.明智地选择你的物理身体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-尽可能使用静态物理"><span class="nav-number">12.</span> <span class="nav-text">11.尽可能使用静态物理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-仔细选择位掩码"><span class="nav-number">13.</span> <span class="nav-text">12.仔细选择位掩码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-密切关注节点并绘制计数"><span class="nav-number">14.</span> <span class="nav-text">13.密切关注节点并绘制计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14-避免向update-函数中添加逻辑"><span class="nav-number">15.</span> <span class="nav-text">14.避免向update()函数中添加逻辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-始终在你支持的最老的硬件上测试"><span class="nav-number">16.</span> <span class="nav-text">15.始终在你支持的最老的硬件上测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外提示：将周期响应事件分开"><span class="nav-number">17.</span> <span class="nav-text">额外提示：将周期响应事件分开</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpriteKit"><span class="nav-number">1.</span> <span class="nav-text">SpriteKit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用纹理图集时要谨慎"><span class="nav-number">2.</span> <span class="nav-text">使用纹理图集时要谨慎</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据需要预加载纹理"><span class="nav-number">3.</span> <span class="nav-text">根据需要预加载纹理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#物体的方向"><span class="nav-number">4.</span> <span class="nav-text">物体的方向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更换，不要混合"><span class="nav-number">5.</span> <span class="nav-text">更换，不要混合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除玩家看不到的节点"><span class="nav-number">6.</span> <span class="nav-text">删除玩家看不到的节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#限制使用裁剪和效果节点"><span class="nav-number">7.</span> <span class="nav-text">限制使用裁剪和效果节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#粒子系统的坑"><span class="nav-number">8.</span> <span class="nav-text">粒子系统的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用兄弟绘图顺序"><span class="nav-number">9.</span> <span class="nav-text">禁用兄弟绘图顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用GPU的着色器"><span class="nav-number">10.</span> <span class="nav-text">使用GPU的着色器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#明智地选择你的物理身体"><span class="nav-number">11.</span> <span class="nav-text">明智地选择你的物理身体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尽可能使用静态物理体"><span class="nav-number">12.</span> <span class="nav-text">尽可能使用静态物理体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#仔细选择位掩码"><span class="nav-number">13.</span> <span class="nav-text">仔细选择位掩码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密切关注节点并绘制计数"><span class="nav-number">14.</span> <span class="nav-text">密切关注节点并绘制计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避免向update-函数中添加逻辑"><span class="nav-number">15.</span> <span class="nav-text">避免向update()函数中添加逻辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#始终在你支持的最老的硬件上测试"><span class="nav-number">16.</span> <span class="nav-text">始终在你支持的最老的硬件上测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外提示：将周期响应事件分开"><span class="nav-number">17.</span> <span class="nav-text">额外提示：将周期响应事件分开</span></a></li></ol></div>
             
 
           </div>
