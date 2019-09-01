@@ -1,0 +1,9 @@
+.cards{
+    margin-top: 20px;
+    text-align: left;
+}
+body{
+    text-align: center;
+    margin: auto;
+    overflow-y:scroll;
+}

@@ -188,16 +188,10 @@ while(True):
     updateData(newIds, forsale)
     t2 = datetime.now()
     print("one loop time=", (t2-t1).seconds)
-
-
-
-# newIds = updateId()
-# for key in newIds:
-#     addData(key)
 cursor.close()
 db.close()
 
-# create table goods (id bigint primary key,
+# create table goods(id bigint primary key,
 # sale tinyint not null,
 # sex tinyint not null,
 # chonglou tinyint not null,
@@ -212,3 +206,24 @@ db.close()
 # wuyi_level int not null,
 # clothes varchar(10),
 # ride varchar(10));
+
+# create table information (id bigint primary key,
+# sex tinyint not null,
+# chonglou tinyint not null,
+# price int not null,
+# menpai tinyint not null,
+# rank tinyint not null,
+# score_equipment int not null,
+# score_diamond int not null,
+# blood int not null,
+# max_attack int not null,
+# max_attribute int not null,
+# shending tinyint not null,
+# wuyi_level int not null,
+# clothes varchar(10),
+# ride varchar(10),
+# contact varchar(20)
+# );
+
+# insert into information values (2142353646,0,1,12455,1,119,155645,874,40000,3,18999,67,76,'a','c','qq:1103042');
+
