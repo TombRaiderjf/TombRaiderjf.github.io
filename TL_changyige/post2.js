@@ -38,6 +38,9 @@ $(document).ready(function(){
                 else{
                     alert("提交失败，请检查商品号是否正确或重复！");
                 }
+            },
+            error: function(response){
+                console.log(response);
             }
         });
     });
