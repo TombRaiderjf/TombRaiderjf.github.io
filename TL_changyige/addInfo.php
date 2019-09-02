@@ -8,7 +8,14 @@ $contact = $_POST['contact'];
 // echo $id;
 // $output = system("python addInfo.py {$id} {$method} {$contact}");
 $output = shell_exec("python addInfo.py 201908201331248636 1 21314542");
-echo "-1";
+$array = explode(',', $output);
+
+foreach ($array as $value) {
+#echo "\n";
+echo $value;
+echo "<br>";
+}
+// echo "-1";
 // echo $output;
 // $array = explode(',', $output);
 // echo $array;
