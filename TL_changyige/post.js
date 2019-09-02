@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $("#submit").click(function(){
         var id = $("#id").val();
-        var method = $("#method").find("option:selected").val();
+        var method = $("#method").val();
         var contact = $("#contact").val();
         if (id == '' || contact == ''){
             alert("不能为空！");
