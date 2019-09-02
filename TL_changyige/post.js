@@ -6,8 +6,11 @@ $(document).ready(function(){
 
     $("#submit").click(function(){
         var id = $("#id").val();
+        
         var method = $("#method").val();
+        
         var contact = $("#contact").val();
+        
         if (id == '' || contact == ''){
             alert("不能为空！");
             return;
@@ -17,7 +20,7 @@ $(document).ready(function(){
             return;
         }
         console.log(id, method, contact);
-        if (!$("#agree").is(':check')){
+        if (!$("#agree").is(":checked")){
             alert("请勾选许可！");
             return;
         }
