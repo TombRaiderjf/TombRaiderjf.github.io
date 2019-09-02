@@ -8,10 +8,43 @@
         <script type="text/javascript" src="jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">     
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>    
-        <link rel="shortcut icon" href="image/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="information.css">     
+        <link rel="shortcut icon" href="image/favicon.ico">    
         <script type="text/javascript" src="information.js"></script>
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <style>
+            .cards{
+                margin-top: 20px;
+                text-align: left;
+                }
+            body{
+                text-align: center;
+                margin: auto;
+                overflow-y:scroll;
+            }
+            #footer{
+                background: #f5f5f5;
+                color: #666;
+                padding: 10px;
+            }
+
+            .return-top{
+                background-color: #222;
+                padding: 4px;
+                color: #FFF;
+            }
+
+            #footer a:hover{
+                color: #555;
+            }
+
+            #footer a:active{
+                color: #444;
+            }
+
+            #footer a:visited{
+                color: #FFF;
+            }
+        </style>
     </head>
     <body>
 
@@ -30,14 +63,21 @@
             </div>
 
             <div class="row" id="tips" style="text-align: left">
-                <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div>
-                        <div><span class="glyphicon glyphicon-envelope"></span>&nbsp;想发布您的商品信息或寻找合适的商品，请联系我qq：1103045615</div>                                       
+                        <div><span class="glyphicon glyphicon-heart"></span>&nbsp;喜欢这个网站就推荐一下，点击广告</div>                                       
+                        <div><span class="glyphicon glyphicon-info-sign"></span>&nbsp;本网站信息由用户提供，无法保障信息真实性，大家谨防诈骗！</div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary pull-right" style="font-size: 18px"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;发布信息</button>
+                </div>
+            </div>
+
             <div class="row" id="goods">
-                <div class="col-lg-4 col-sm-4">
+                <!-- <div class='col-lg-3 col-sm-4'>
                     <div class="panel panel-default cards">
                         <div class="panel-heading">
                             <h3 class="panel-title">峨眉 | 119级 | 女</h3>
@@ -57,11 +97,38 @@
                             <p>联系方式：</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 
             </div>
             </div>
         
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                    <div>
+                        <span>Powered by Bootstrap v3.3.7</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span>&nbsp; Author -- 阿茶</span>
+                    </div>
+                    <div>
+                        <i class="fa fa-bell-o" aria-hidden="true"></i>
+                        <span>抢号程序打包出售，需要的发我Email：<b>jiangfanloveen@outlook.com</b></span>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                    <div class="pull-right">
+                    <div>
+                    <a href="http://tombraiderjf.com" target="_blank" class="return-top" id="home"><i class="fa fa-home"></i></a></div>
+                    <div style="margin-top:8px;">
+                    <a href="#" class="return-top" id="back2top"><i class="fa fa-arrow-up"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
     </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+//index界面获取数据库查询信息
 header('Access-Control-Allow-Origin:http://tombraiderjf.com');
 
 $chonglou = $_POST["chonglou"];

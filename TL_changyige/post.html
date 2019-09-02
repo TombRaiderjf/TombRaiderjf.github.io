@@ -1,0 +1,81 @@
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">     
+        <title>天龙八部商品信息小站</title>    
+        <meta name="keywords" content="天龙八部角色, 卖家联系">
+        <meta name="description" content="天龙八部畅易阁角色卖家信息公示，方便买家卖家联系">
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">     
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>    
+        <link rel="shortcut icon" href="image/favicon.ico">   
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="post.js"></script>
+        <style>
+
+            body{
+                text-align: center;
+                margin: auto;
+                overflow-y:scroll;
+            }
+            #footer{
+                background: #f5f5f5;
+                color: #666;
+                padding: 10px;
+            }
+
+            .return-top{
+                background-color: #222;
+                padding: 4px;
+                color: #FFF;
+            }
+
+            #footer a:hover{
+                color: #555;
+            }
+
+            #footer a:active{
+                color: #444;
+            }
+
+            #footer a:visited{
+                color: #FFF;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12" style="margin-bottom: 20px">
+                    <h1>商品信息发布</h1>
+                </div>
+            </div>
+            <div class="row" style="text-align: left">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-bottom: 20px">
+                    <div class="form-group">
+                        <label for="name">商品号（例如：201908201331248636）</label>
+                        <input type="number" class="form-control" id="id" placeholder="请输入商品号">
+                    </div>     
+                    <div class="form-group">        
+                        <label>选择联系方式</label>
+                        <select class="form-control" id="method">
+                            <option value="0">QQ号</option>
+                            <option value="1">微信</option>                     
+                            <option value="2">手机号</option>
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label>联系方式内容（只能输入数字、字母和下划线）</label>
+                        <input type="text" class="form-control" id="contact" placeholder="请输入联系方式">
+                    </div>
+                    <div class="form-group">                   
+                        <input type="checkbox" id="agree">&nbsp;我是商品所有人且信息填写无误，允许信息对任何人可见
+                    </div>
+                    <div>
+                        <button id="submit" type="submit" class="btn btn-default btn-block">提&nbsp;交</button>
+                    </div>
+                </div>
+            </div>
+    </div></body>
+</html>

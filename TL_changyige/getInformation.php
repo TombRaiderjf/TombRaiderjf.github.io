@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()){
         $data = array(
             'id'=>$row["id"], 
+            'server'=>$row['server'],
             'sex'=>$row["sex"],
             'chonglou'=>$row["chonglou"],
             'price'=>$row["price"],
