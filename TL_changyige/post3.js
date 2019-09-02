@@ -29,7 +29,7 @@ $(document).ready(function(){
             url: "http://47.102.140.114/TL_changyige/addInfo.php",
             data: postData,//传输的数据
             type:'post',//数据传送的方式post
-            dataType:'json',//数据传输的格式是json
+            dataType:'text',//数据传输的格式是json
             success: function(response){
                 console.log(response);
                 if(response == "success"){
