@@ -373,7 +373,7 @@ $(document).ready(function(){
 
     $("#postInfo").click(function(){
         //window.open("http://tombraiderjf.com/TL_changyige/post.html", '_blank');
-        window.open("http://tombraiderjf.com/post.html", '_blank');
+        window.open("http://tombraiderjf.com/TL_changyige/post.html", '_blank');
     });
     $("#home").click(function(){
         window.location.href = 'http://tombraiderjf.com/TL_changyige/index.html';
