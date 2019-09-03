@@ -133,6 +133,10 @@ $(document).ready(function(){
         },
     });
 
+    $("#info").click(function(){
+        window.location.href = "http://tombraiderjf.com/TL_changyige/information.html"
+    })
+
     $("#check").click(function(){ 
         //确认post数据
         var menpai = [];

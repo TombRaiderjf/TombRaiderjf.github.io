@@ -26,10 +26,11 @@ $(document).ready(function(){
         }
         var postData = {'id': id, 'method': method, 'contact': contact};
         $.ajax({
-            url: "http://47.102.140.114/TL_changyige/addInfo.php",
+            url: "http://47.102.140.114:8080/submitInfo",
             data: postData,//传输的数据
             type:'post',//数据传送的方式post
             dataType:'text',//数据传输的格式是json
+            headers: {'content-type':'application/json'},
             success: function(response){
                 console.log(response);
                 if(response == "success"){
@@ -43,6 +44,5 @@ $(document).ready(function(){
                 console.log(response);
             }
         });
-    });
-    
+    });  
 });

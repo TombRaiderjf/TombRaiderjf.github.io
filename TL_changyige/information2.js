@@ -83,16 +83,19 @@ $(document).ready(function(){
         body.appendChild(clothes);
         
         var contact = document.createElement('p');
-        contact.innerHTML = "联系方式：" + data['contact'];
-        if (data['method'] == 0){
-            contact.innerHTML += "<i class='fa fa-qq'></i>";
+        contact.innerHTML = "联系方式：" + data['contact'] + " ";
+        var icon = document.createElement('i');
+        icon.classList.add("fa");
+        if (data['method'] == '0'){
+           icon.classList.add("fa-qq");
         }
-        if(data['method'] == 1){
-            contact.innerHTML += "<i class='fa fa-weixin'></i>";
+        if(data['method'] == '1'){
+            icon.classList.add("fa-weixin");
         }
-        if(data['method'] == 2){
-            contact.innerHTML += "<i class='fa fa-phone'></i>";
+        if(data['method'] == '2'){
+            icon.classList.add("fa-phone");
         }
+        contact.appendChild(icon);
         body.appendChild(contact);
         var buybtn = document.createElement('button');
         if (data['menpai']== '0' || data['menpai']== '3' ||data['menpai']== '6'){
@@ -368,10 +371,13 @@ $(document).ready(function(){
         }
     });
 
-    $("#postInfo").onclick = function(){
+    $("#postInfo").click(function(){
         //window.open("http://tombraiderjf.com/TL_changyige/post.html", '_blank');
-        window.open("http://47.102.140.114/post.html", '_blank');
-    };
+        window.open("http://tombraiderjf.com/post.html", '_blank');
+    });
+    $("#home").click(function(){
+        window.location.href = 'http://tombraiderjf.com/TL_changyige/index.html';
+    });
     
 });
 

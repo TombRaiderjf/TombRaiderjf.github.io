@@ -8,7 +8,8 @@ import random
 import MySQLdb
 import json
 import re
-
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 clothes_dict = {10124637: "a", 10125199: "b", 10125028: "c", 10124724: "c", 10124607: "d", 10125133: "d", 10125055: "e", 10124405: "f", 10124404: "g",
 10124403: "h", 10124542: "i", 10125108: "j"}
@@ -121,58 +122,63 @@ def addData(id, method, info):
     }
     html = requests.get(url, headers=header)
     if html.status_code == 200:
-        soup = BeautifulSoup(html.content, "html.parser")
-        price = soup.find('span', class_='ui-money-color').get_text()[1:]
-        server_str = soup.find('p', class_='server-info').get_text()
-        for key in server_dict:
-            if server_str.find(server_dict[key]) != -1:
-                server = key
-        index_data = html.text.find('charObj')
-        to_data = html.text.find(';', index_data)
-        data = html.text[index_data+10: to_data]
-        dict_data = json.loads(data)  # str转为dict
-        sex = str(dict_data['sex'])
-        menpai = str(dict_data['menpai'])
-        rank = str(dict_data['level'])
-        score_equipment = str(dict_data['equipScore'])
-        chonglou = "0"
-        if dict_data['CLNum'] != 0:
-            chonglou = "1"
-        wuyi_level = str(dict_data['martialDB']['martialLevel'])
-        shending1 = dict_data['shenDing']['danYaoCount']
-        shending2 = dict_data['shenDing']['lianDanCount']
-        shending_index1 = 0
-        shending_index2 = 0
-        for m in range(1, 10):
-            if (shending1 - m) >=0:
-                shending_index1 = m
-                shending1 -= m
-            if (shending2 - m) >=0:
-                shending_index2 = m
-                shending2 -= m
-        shending = shending_index2 + 10*shending_index1
-        score_diamond = str(dict_data['gemJinJieScore'])
-        blood = str(dict_data['maxHp'])
-        attack_arr = [dict_data["coldAtt"], dict_data["fireAtt"], dict_data["lightAtt"], dict_data["postionAtt"] ]     
-        max_attack = max(attack_arr)
-        max_attribute = str(attack_arr.index(max_attack))
-        ride = ""
-        clothes = ""
-        for item in dict_data['items']['equip']:
-            if dict_data['items']['equip'][item]['typeDesc'] == "时装":
-                for key in clothes_dict:
-                    if clothes.find(clothes_dict[key])==-1 and key == dict_data['items']['equip'][item]['dataId']:
-                        clothes += clothes_dict[key]
-            if dict_data['items']['equip'][item]['typeDesc'] == "坐骑":
-                for key in ride_dict:
-                    if ride.find(ride_dict[key])==-1 and dict_data['items']['equip'][item]['name'].find(key) != -1:
-                        ride += ride_dict[key]
-        if ride == "":
-            ride = "0"
-        if clothes == "":
-            clothes = "0"
-        print(id, method, server, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride, info)
-        write_data(id, method, server, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride, info)
+        try:
+            soup = BeautifulSoup(html.content, "html.parser")
+            price = soup.find('span', class_='ui-money-color').get_text()[1:]
+            server_str = soup.find('p', class_='server-info').get_text()
+            for key in server_dict:
+                if server_str.find(server_dict[key]) != -1:
+                    server = key
+            index_data = html.text.find('charObj')
+            to_data = html.text.find(';', index_data)
+            data = html.text[index_data+10: to_data]
+            dict_data = json.loads(data)  # str转为dict
+            sex = str(dict_data['sex'])
+            menpai = str(dict_data['menpai'])
+            rank = str(dict_data['level'])
+            score_equipment = str(dict_data['equipScore'])
+            chonglou = "0"
+            if dict_data['CLNum'] != 0:
+                chonglou = "1"
+            wuyi_level = str(dict_data['martialDB']['martialLevel'])
+            shending1 = dict_data['shenDing']['danYaoCount']
+            shending2 = dict_data['shenDing']['lianDanCount']
+            shending_index1 = 0
+            shending_index2 = 0
+            for m in range(1, 10):
+                if (shending1 - m) >=0:
+                    shending_index1 = m
+                    shending1 -= m
+                if (shending2 - m) >=0:
+                    shending_index2 = m
+                    shending2 -= m
+            shending = shending_index2 + 10*shending_index1
+            score_diamond = str(dict_data['gemJinJieScore'])
+            blood = str(dict_data['maxHp'])
+            attack_arr = [dict_data["coldAtt"], dict_data["fireAtt"], dict_data["lightAtt"], dict_data["postionAtt"] ]     
+            max_attack = max(attack_arr)
+            max_attribute = str(attack_arr.index(max_attack))
+            ride = ""
+            clothes = ""
+            for item in dict_data['items']['equip']:
+                if dict_data['items']['equip'][item]['typeDesc'] == "时装":
+                    for key in clothes_dict:
+                        if clothes.find(clothes_dict[key])==-1 and key == dict_data['items']['equip'][item]['dataId']:
+                            clothes += clothes_dict[key]
+                if dict_data['items']['equip'][item]['typeDesc'] == "坐骑":
+                    for key in ride_dict:
+                        if ride.find(ride_dict[key])==-1 and dict_data['items']['equip'][item]['name'].find(key) != -1:
+                            ride += ride_dict[key]
+            if ride == "":
+                ride = "0"
+            if clothes == "":
+                clothes = "0"
+            print(id, method, server, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride, info)
+            flag = write_data(id, method, server, sex, chonglou, price, menpai, rank, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride, info)
+            return flag
+        except:
+            print("Error: invalid id!")
+            return False
 
 def write_data(id, method, server, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride, contanct):
     # sql = "insert into information value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" %(id, server, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, wuyi_level, clothes, ride, contanct)
@@ -180,105 +186,36 @@ def write_data(id, method, server, sex, chonglou, price, menpai, rank_pure, scor
         cursor.execute("insert into information value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (id, method, server, sex, chonglou, price, menpai, rank_pure, score_equipment, score_diamond, blood, max_attack, max_attribute, shending, wuyi_level, clothes, ride,contanct))       
         db.commit()
         print("add new ", id)
+        return True
     except:
         db.rollback()
         print("fail to add new ", id)
+        return False
+
+app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 
-if __name__ == "__main__":
-    id_str = sys.argv[1]
-    method = sys.argv[2]
-    info= sys.argv[3]
-    db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
-    cursor = db.cursor()
-    addData(id_str, method, info)
-    cursor.close()
-    db.close()
+@app.route('/submitInfo', methods=['POST'])
+def post():
+    print("-----------------")
+    raw_data = request.get_data()
+    data = raw_data.decode('utf-8')
+    print(data)
+    str_data = data.split('&')
+    id = str_data[0].split('=')[1]
+    method = str_data[1].split('=')[1]
+    contact = str_data[2].split('=')[1]
+    #print(data)
+    res = addData(id, method, contact)
+    if res == True:
+        return "success"
+    else:
+        return "error"
 
 
-# server_dict = {
-#     14:  ["易筋经", "太极剑法", "八卦掌", "铁砂掌", "双截棍", "薛慕华"],
-#     22:  ["水晶湖", "许愿树", "段誉", "长河落日", "将进酒", "灵魂战甲", "龙腾虎跃", "白云古洞", "少室晴雪", "光明顶", "潜龙之渊", "林海雪原", "兴安岭",  "银冈书院", "潜龙之渊", "秋叶红", "剑胆琴心", "杏花村", "九阴白骨爪"],
-#     38:  ["九阴真经", "蓝砂手"],
-#     47:  ["神龙摆尾", "含沙射影", "斗转星移", "寒冰掌", "漓江春水", "百花洲", "阿碧", "凌波微步", "一指禅", "鱼肠剑", "丁春秋", "17173", "高粱白"],
-#     65:  ["黄果树", "普陀山", "玄武岛", "黄鹤楼", "北冥神功", "雁翎枪", "九曲溪径", "鼓浪闻涛", "丹霞晨曦", "五指山", "乾坤大挪移", "天机棒"],
-#     68:  ["西双版纳", "阿紫", "甘露酒", "一阳指", "齐眉棍", "罗汉拳", "龙爪手", "苏星河", "云中鹤"],
-#     85:  ["妖界", "官马溶洞", "白山黑水", "雾凇翠柏", "珍宝岛", "打狗棒法", "独孤九剑", "碧血剑", "干将剑", "杜康", "女儿红"],
-#     101: ["紫禁之巅"],
-#     111: ["八达岭", "颐和园", "落英剑法", "狮子吼", "般若掌", "修罗"],
-#     118:  ["北戴河", "桃园仙谷", "五台山", "山海关", "沂蒙山", "悬空寺", "二锅头", "雄黄酒"],
-#     134:  ["凤凰山","鸭绿江",  "月落西山", "水月洞天", "战魂不灭", "烽烟四起", "小无相功", "擒拿手", "穿云刀", "段延庆"],
-#     137: ["太湖仙岛"],
-#     149: ["雨花台", "天界", "枯荣长老", "仙人醉", "珊瑚珠", "自习室", "2008", "万松书院", "九宫阵", "九宫阵", "牛肉干"],
-#     154: ["双龙洞","崇明春色", "枫桥夜泊",  "雷峰塔", "替天行道", "御龙在天", "赤胆忠心", "玉女心经", "贪狼剑", "气贯长虹", "洛神图", "天山雪莲", "清风怡江", "夜西湖", "四海金兰", "排山倒海", "鱼跃龙门", "千里共婵娟"],
-#     155: ["上海滩", "烟雨楼", "乔峰归来", "飞龙在天", "慕容博", "冰蚕掌", "岳老三", "人界", "老白干"],
-#     162:  ["张家界", "聚贤庄", "天涯海角", "桂林山水", "白虹剑", "辟邪剑谱", "玄冥神掌", "逍遥游", "生死符", "无影脚"],
-#     168: ["武夷山", "三潭印月", "外滩夜色", "虎丘剑池", "黄浦江", "九华山", "雁荡山", "西湖龙井"],
-#     172:  ["冥界", "连理枝", "亢龙有悔", "鸠摩智", "双溪明月", "罗浮山", "清源山", "黄龙洞", "九阳真经"],
-#     182:  ["洞庭秋月","香格里拉", "茶马古道", "五毒秘传", "金钟罩", "弹指神通", "真武七截阵", "湘江夜色"],
-#     188:  ["阿朱", "紫气东来", "琅琊山", "六脉神剑", "泥鳅功", "赤壁怀古", "白马禅寺", "庐山飞瀑", "滕王阁", "丹霞山", "聚宝盆", "秋水长天", "金刚经", "潇湘夜雨"],
-#     191:  ["蜀南竹海", "蝴蝶泉"],
-#     198: ["剑门蜀道", "九寨沟", "无量山", "秀峰梦境", "檀香扇", "浏阳河", "芙蓉镇", "天心阁", "石鼓书院", "南湖书院", "劫火焚杀", "楼兰古城", "火焰山", "星宿海"],
-#     209:  ["昆仑山", "梅里雪山", "天池龙宫", "都江堰", "大漠孤烟", "敦煌飞天"],
-#     1010:  ["烧刀子", "金钱镖", "金牛座", "剑舞江南", "东方明珠", "城隍庙", "燕子坞", "葵花宝典", "冻顶乌龙", "富贵竹", "天宁寺", "寒山寺", "长蛇阵", "龙泉剑", "太白饮", "鸳鸯佩", "阳春白雪", "榕城书院", "锋矢阵", "篮球馆", "金蛇锥", "双鱼座"],
-#     1015:  ["云雾茶", "断桥残雪", "莲峰云海", "钱塘江", "雁门关", "玉扳指", "吉祥锁", "鸣沙山", "太行山", "居庸关", "秦皇古道", "雁行阵"],
-#     1042: ["三生石", "玄雷击杀", "偃月阵", "透骨钉", "永恒", "碧螺春", "比翼鸟", "大明湖", "金石滩", "万佛园", "避暑山庄", "嵩阳书院"],
-#     1043: ["问情崖", "太清宫", "玫瑰花", "爆米花", "双子座", "玄慈", "君山银针", "太祖长拳", "紫霞秘籍", "达摩棍", "天山童姥", "汉宫秋月"],
-#     1053:  ["什刹海", "云冈石窟", "少林寺", "香露茶", "漳南书院", "天外飞仙", "丝绸之路", "平湖秋月", "寻缘镜", "仗剑天涯", "嫦娥奔月", "花开盛世", "兵临城下", "龙门石窟", "功成名就", "古韵华筝", "风起云涌"],
-#     1138:  ["百泉书院", "蓬莱仙境", "马踏飞燕", "水泊梁山", "晋阳书院", "玉佛苑", "大乘寺", "会宁府", "七星阵", "恋曲2009", "血滴子", "水瓶座", "玉虚幻境"],
-#     1161: ["千寻塔", "普洱茶", "功夫茶", "平安扣", "宝葫芦", "忘忧谷", "栖霞山", "同桌的你", "七星岩", "南华禅寺", "梨花针", "夜明珠", "梨花针"],
-#     1171: [ "乐山大佛","相思河", "束河古镇", "朝天门", "临江书院", "鹤翼阵", "棉花糖", "铁莲子", "李庄古镇", "关中书院", "巧克力", "八卦阵", "巧克力", "镇北堡", "兰山书院"],
-#     1191:  ["五峰书院", "天目山", "风雨钟山", "花果山", "游坦之", "状元红", "猴儿酒", "天目山", "东坡书院", "隐贤山庄", "深渊战场", "琼华殿", "铁观音", "寂寞高手", "摇钱树", "相逢桥"],
-#     2020:  ["峨嵋山", "第二食堂", "桃花阵", "射手座", "太阿剑", "李秋水", "地界", "竹叶青", "天帝城", "梦回连营", "乔峰", "铁血丹心", "花雕", "半城烟沙", "所向披靡", "越秀山", "亚龙湾", "广济桥", "冰淇淋"],
-#     2021:  ["天蝎座", "巨蟹座", "处女座", "天蝎座", "雁南飞", "黑血神针", "盛世长安", "烤鱼片", "花装弩", "时空裂缝", "逐鹿中原", "大燕韵章", "洱海月", "曼陀园", "纵横天下", "虚竹"],
-#     2082:  ["不冻泉", "足球场", "熊猫龙龙", "长白天池", "老虎滩", "世外桃源", "圣火宫", "木婉清", "碧云天", "龙腾九天"],
-#     2093:  ["锦绣中华", "塞外蟠龙", "盖碗茶", "清风楼", "玉蜂针", "松花江畔", "奉天府", "中国结", "金元宝", "镜泊湖", "弹指神功", "桃花扇", "山盟海誓", "梯云纵", "拈花指", "孔雀翎", "萧远山"],
-#     2201: ["听香水榭"],
-#     2202:  ["极冰凝杀", "鱼鳞阵", "女生宿舍", "开心果", "飞蝗石", "盘龙", "彩云之南", "王语嫣", "千岛湖", "行者无双", "披荆斩棘", "剑舞春秋", "傲视群雄", "碧海苍穹", "琴音小筑", "燕蝶梦溪", "灵泉仙池", "清影花海", "苍山雪", "剑湖宫", "剑指苍穹", "群雄争霸", "独步天下", "剑啸山河", "象鼻山", "灵龟塔", "梅花镖", "狮子座", "白鹭洲"],
-#     3016: ["仙侣情缘"],
-#     3048:  ["天若有情", "乾坤无极", "玉楼春", "星移无痕", "轩缘殿", "念奴娇", "劈星斩月", "寒玉谷", "鹰击长空", "横扫千军", "指点江山", "华山论剑", "肝胆相照", "金戈铁马", "对酒当歌", "惊涛骇浪", "南征北战", "百步穿杨", "戎马无疆", "金玉满堂", "笑傲江湖", "开天辟地", "雄霸天下"],
-#     3079: ["九天惊雷", "雪舞燃情", "剑气如虹", "铁血战歌", "傲剑凌云", "九转天机", "极光流萤", "赤雪玄凤", "情比金坚", "龙游天下", "天长地久", "花好月圆", "金榜题名", "龙飞凤舞", "烟雨清荷", "王者归来", "龙凤呈祥"],
-#     3081:  ["唯我独尊", "回风舞雪", "满江红", "武魂传说", "卧虎藏龙", "雪莲花", "沧浪亭", "山河情", "月光宝盒", "龙腾万里", "水调歌头", "曲径通幽", "无量玉璧", "四绝庄", "梅花三弄", "仙羽凝月", "素缘辞", "英雄志", "侠骨柔情", "虎啸龙吟", "风云再起", "龙吟九天"],
-#     3085:  ["万敌不侵", "破武修心", "天荒古境", "天外江湖", "叱咤风云", "豪情壮志", "凤鸣九天", "缘定三生", "乱世群雄", "仁者无敌", "龙啸九州", "九州神龙", "纵横四海", "醉卧沙场", "斗破苍穹", "翠竹幽幽"],
-#     3125:  ["天下第一", "龙战九天", "游龙戏凤", "猎命江湖", "烽火连天", "普天同庆", "群雄逐鹿", "精忠报国", "天龙客栈", "定海神针", "天涯明月", "剑啸江湖"],
-#     3128:  ["烽火连城", "乱世狂刀", "盖世英雄", "雷霆万钧", "醉枕江山", "乱世枭雄", "气壮山河", "锦绣河山", "步步为营", "秋水无痕", "问鼎天下", "月满西楼", "倾国倾城", "龙吟九霄", "百战江湖", "怒火连斩", "纵横沙场", "长风破浪", "风云天下", "天地无极", "大悲手印", "再战江湖", "侠影无踪"],
-#     3144: ["金风玉露", "绝世唐门", "暴雨梨花", "仙人指路"],
-#     3145:  ["天一阁", "白羊座", "瑶池仙境", "玉如意", "龙凤镯", "月牙泉", "东林书院", "浔阳楼", "狂战天下", "海纳百川", "江山如画", "一战倾城", "横刀立马", "盛世天下", "高山流水", "扬子江", "万山宗", "沙场点兵"],
-#     3161:  ["降龙伏虎", "威震天下", "霸者无双", "九天揽月", "风雨同舟", "王者至尊", "刀剑如梦", "盖世豪杰", "大风歌", "漫天花雨", "勿忘江湖", "天下桃李", "心有灵犀", "刀光剑影", "雁门烽火", "气吞山河", "踏雪寻梅", "雪山飞狐", "风花雪月", "凤舞九天", "秦时明月", "龙腾盛世", "义薄云天", "谁与争锋"],
-#     3192:  ["独孤求败", "忘川花海", "英雄本色", "楼兰夜雪", "紫霞小筑", "妙笔仙音", "玉门叠翠", "踏雪无痕", "天下无双", "荷塘月色", "黄沙百战"],
-#     3200:  ["天龙", "倾心", "释放", "千与千寻"],
-#     3202:  ["天下", "红尘", "盛世", "英雄", "无双", "龙吟", "无极", "宿命", "决战", "无忧", "天仙", "纵情"],
-#     4025:  ["紫电青霜", "仗剑江湖", "壮志凌云", "名震天下", "呼风唤雨", "一统江湖", "群龙聚首", "倚天屠龙", "阳关三叠", "战无不胜", "龙争虎斗", "厉兵秣马", "武动乾坤", "独步江湖", "深海迷踪", "怒海惊涛", "天下王城", "剑锁江山"],
-#     4036:  ["名扬天下", "龙战九州", "心心相印", "如日中天", "血战江湖", "摩羯座", "天秤座", "号令天下", "皇图霸业", "行云流水", "伊兰雪山", "君临天下", "河南", "河南江湖", "清风明月", "梧桐细雨", "武林至尊"],
-#     5013: ["天命"],
-#     5016:  ["幻影", "王权", "追命", "乾坤", "绝杀", "龙啸", "阡陌"],
-#     5024: ["宠爱一生", "玄海", "笑傲", "光辉岁月", "万剑归宗", "洛神", "纵横", "豪杰", "至尊", "辉煌", "皓月", "逐鹿", "雷霆", "星辰"],
-#     5038:  ["一世长安", "莫失莫忘", "血战八方", "浮生若梦", "不忘初心", "烟雨", "王者", "天涯", "踏雪", "烽火"],
-#     5057:  ["千秋殿", "江湖", "战魂", "雄霸", "东方不败", "风云", "灭世", "傲世", "狂龙", "放纵", "巅峰", "苍穹", "勿忘心安"],
-#     5060:  ["英雄战歌", "天外之王", "赤焰", "无涯海", "炎罗天", "冰雪奇缘", "长歌"],
-#     5065:  ["一代宗师", "英雄剑", "醉沙场", "战江山", "似水流年"],
-#     5068: ["三世情缘", "相濡以沫"],
-#     5069: ["天下为棋", "武意纵横"],
-#     5072:  ["只手遮天", "倾覆江湖", "无法无天", "矢志不渝"],
-#     5074:  ["十里桃花", "醉梦年华"],
-#     5075:  ["醉梦江南", "三生三世"],
-#     5076: ["不见不散", "修罗场", "绣春刀", "那年花开"],
-#     5083: ["一梦十年"],
-#     5084: ["金戌迎瑞", "流金岁月"],
-#     5087: ["天下会武", "韶梦年华"],
-#     5088: ["守望江湖"],
-#     5089: ["在水一方"],
-#     5090: ["铜锣湾"],
-#     5091: ["宁为我道"],
-#     5092: ["师门逆徒"],
-#     5093: ["逐梦江湖"],
-#     5094: ["鸿运连年"],
-#     5095: ["鸿运当头"],
-#     5096: ["瑞鹤千秋"],
-#     5097: ["鹤舞九霄"],
-#     5098: ["愿君共白首"],
-#     5099: ["以梦为马"],
-#     5120: ["惜君青玉裳"],
-#     9066: ["争霸赛一区"],
-#     9140: ["烟雨轩", "破天一剑", "春花秋月", "七伤拳", "大力金刚指", "蛤蟆功", "莫邪剑", "无崖子", "叶二娘", "小桥流水", "浪迹天涯", "渔舟唱晚", "曲院风荷", "熊猫天天", "观沧海", "明秀园"]
-# }
+db = MySQLdb.connect('localhost', 'root', 'hc7783au', 'tl')
+cursor = db.cursor()
+
+if __name__ == "__main__":   
+    app.run(host='0.0.0.0', port=8080, debug=False, threaded=False)

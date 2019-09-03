@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: http://117.131.219.13');
+header('Access-Control-Allow-Origin: http://tombraiderjf.com');
 
 $servername = "localhost";//MySQL默认为localhost，端口号3306
 $username = "root";
@@ -44,7 +44,8 @@ if ($result->num_rows > 0) {
             'wuyi_level'=>$row["wuyi_level"],
             'clothes'=>$row["clothes"],
             'ride'=>$row["ride"],
-            'contact'=>$row["contact"]
+            'contact'=>$row["contact"],
+            'method'=>$row["method"]
         ); 
         array_push($res, $data);
         $count = $count + 1;
